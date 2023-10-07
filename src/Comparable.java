@@ -12,7 +12,7 @@ package project;
 
 interface Comparable {
     
-  public void CompareTo();  
+  public void CompareTo(String s1, String s2);  
   public void display();
 }
 
