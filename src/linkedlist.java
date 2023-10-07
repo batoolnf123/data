@@ -14,7 +14,7 @@ public class linkedlist<Contact>
 {
  private node<Contact> head;
  private node<Contact> current;
- node<t> next;
+ node<Contact> next;
 
     public linkedlist(node<Contact> h) {
         head = h;
