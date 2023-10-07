@@ -1,13 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author batoolalfouzan
- */
-
 package project;
 
 public class linkedlist<Contact> 
@@ -41,7 +31,7 @@ public node<Contact> searchbyName(String name)
      current=head;
      while(current!=null)
      {
-         if ((node<Contact>)current.getData().getContactName()==(node<t>)search.getData().getContactName())
+         if ((node<Contact>)current.getData().getContactName()==(node<Contact>)search.getData().getContactName())
              return current;
          else 
            current=current.next;
