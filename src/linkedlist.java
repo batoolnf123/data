@@ -10,22 +10,22 @@
 
 package project;
 
-public class linkedlist<t> 
+public class linkedlist<Contact> 
 {
- private node<t> head;
- private node<t> current;
+ private node<Contact> head;
+ private node<Contact> current;
  node<t> next;
 
-    public linkedlist(node<t> h) {
+    public linkedlist(node<Contact> h) {
         head = h;
         next = null;
     }
 
 
-public void add(t nweContact) 
+public void add(Contact nweContact) 
 {
         if (head == null) 
-            head = new node<t>(nweContact);
+            head = new node<Contact>(nweContact);
        
         else
           current.next=nweContact;
@@ -33,7 +33,7 @@ public void add(t nweContact)
         
 }
 
-public node<t> searchbyName(String name)
+public node<Contact> searchbyName(String name)
 {
  if (head==null)
      return null;
@@ -41,7 +41,7 @@ public node<t> searchbyName(String name)
      current=head;
      while(current!=null)
      {
-         if ((node<t>)current.getData().getContactName()==(node<t>)search.getData().getContactName())
+         if ((node<Contact>)current.getData().getContactName()==(node<t>)search.getData().getContactName())
              return current;
          else 
            current=current.next;
@@ -49,7 +49,7 @@ public node<t> searchbyName(String name)
     return null; 
 }
 
-public node<t> searchbyemail(String email)
+public node<Contact> searchbyemail(String email)
 {
  if (head==null)
      return null;
@@ -57,14 +57,14 @@ public node<t> searchbyemail(String email)
      current=head;
      while(current!=null)
      {
-         if ((node<t>)current.getData().getEmailAddress()==(node<t>)search.getData().getEmailAddress())
+         if ((node<Contact>)current.getData().getEmailAddress()==(node<Contact>)search.getData().getEmailAddress())
              return current;
          else 
            current=current.next;
      }
     return null; 
 }
-public node<t> searchbphonenum(String email)
+public node<Contact> searchbphonenum(String email)
 {
  if (head==null)
      return null;
@@ -72,23 +72,7 @@ public node<t> searchbphonenum(String email)
      current=head;
      while(current!=null)
      {
-         if ((node<t>)current.getData().getPhoneNumber()==(node<t>)search.getData().getPhoneNumber())
-             return current;
-         else 
-           current=current.next;
-     }
-    return null; 
-}
-
-public node<t> searchbyaddress(String email)
-{
- if (head==null)
-     return null;
- else
-     current=head;
-     while(current!=null)
-     {
-         if ((node<t>)current.getData().getAddress()==(node<t>)search.getData().getAddress())
+         if ((node<Contact>)current.getData().getPhoneNumber()==(node<Contact>)search.getData().getPhoneNumber())
              return current;
          else 
            current=current.next;
@@ -96,7 +80,7 @@ public node<t> searchbyaddress(String email)
     return null; 
 }
 
-public node<t> searchbybirthday(String email)
+public node<Contact> searchbyaddress(String email)
 {
  if (head==null)
      return null;
@@ -104,7 +88,7 @@ public node<t> searchbybirthday(String email)
      current=head;
      while(current!=null)
      {
-         if ((node<t>)current.getData().getBirthday()==(node<t>)search.getData().getBirthday())
+         if ((node<Contact>)current.getData().getAddress()==(node<Contact>)search.getData().getAddress())
              return current;
          else 
            current=current.next;
@@ -112,7 +96,23 @@ public node<t> searchbybirthday(String email)
     return null; 
 }
 
-public void deletContact(node<t> delet)
+public node<Contact> searchbybirthday(String email)
+{
+ if (head==null)
+     return null;
+ else
+     current=head;
+     while(current!=null)
+     {
+         if ((node<Contact>)current.getData().getBirthday()==(node<Contact>)search.getData().getBirthday())
+             return current;
+         else 
+           current=current.next;
+     }
+    return null; 
+}
+
+public void deletContact(node<Contact> delet)
 {
  if (head==null)
      return;
