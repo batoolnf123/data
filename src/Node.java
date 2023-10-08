@@ -3,12 +3,12 @@ package project;
 
 
 
-public class node<t> {
-public t data;
-public node <t> next;
-public node<t> prev;
+public class node<T> {
+public T data;
+public node <T> next;
+public node<T> prev;
 
-    public node(t d) {
+    public node(T d) {
         this.data = d;
         next=null;
         prev=null;
@@ -16,7 +16,9 @@ public node<t> prev;
         
     }
 
-    public t getData() {
+    public T getData() {
         return data;
     }
+    
+
 }
