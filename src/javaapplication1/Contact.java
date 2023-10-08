@@ -14,11 +14,11 @@ public class Contact implements Comparable<Contact>
  private String  birthday;
  private String notes;
 
-    public Contact() //costructor
+    public Contact() //  costructor joury
     {
     }
 
-    public Contact(String contactName, String phoneNumber, String emailAddress, String address, String birthday, String notes) //copy costructor
+    public Contact(String contactName, String phoneNumber, String emailAddress, String address, String birthday, String notes) //copy costructor joury
     {    
         this.contactName = contactName;
         this.phoneNumber = phoneNumber;
@@ -37,51 +37,63 @@ public class Contact implements Comparable<Contact>
         birthday = contact.getBirthday();
         notes = contact.getNotes();    
     }
-    public void setContactName(String contactName) {
+    public void setContactName(String contactName) //joury
+ {
         this.contactName = contactName;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) //joury
+ {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setEmailAddress(String emailAddress) {
+    public void setEmailAddress(String emailAddress) //joury
+ {
         this.emailAddress = emailAddress;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(String address) //joury
+ {
         this.address = address;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(String birthday) //joury
+ {
         this.birthday = birthday;
     }
 
-    public void setNotes(String notes) {
+    public void setNotes(String notes) //joury
+ {
         this.notes = notes;
     }
   
- public String getContactName() {
+ public String getContactName() //joury
+ {
         return contactName;
     }
 
-    public String getPhoneNumber() {
+    public String getPhoneNumber() //joury
+ {
         return phoneNumber;
     }
 
-    public String getEmailAddress() {
+    public String getEmailAddress() //joury
+ {
         return emailAddress;
     }
 
-    public String getAddress() {
+    public String getAddress() //joury
+ {
         return address;
     }
 
-    public String getBirthday() {
+    public String getBirthday() //joury
+ {
         return birthday;
     }
 
-    public String getNotes() {
+    public String getNotes() //joury
+ {
         return notes;
     }
     
@@ -102,13 +114,15 @@ public class Contact implements Comparable<Contact>
       notes=read.nextLine();
   }  
  @Override
-     public void display(){
+     public void display() //joury
+ {
      System.out.println("Contact: "+contactName+ " phone number: "+phoneNumber+ "email address: "+ emailAddress+"address: "
              +address+"birthday: "+birthday+"notes: "+notes);
  }
 
     @Override
-    public int CompareTo(String second) {
+    public int CompareTo(String second) //joury
+ {
    if (getContactName().compareTo(second)==0)
             return 0;
         else   if (getContactName().compareTo(second)>0)
