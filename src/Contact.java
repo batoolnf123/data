@@ -1,5 +1,7 @@
 package project;
 
+import java.util.Scanner;
+
 public class Contact implements Comparable<Contact>
 {
  private String contactName;
@@ -81,7 +83,21 @@ public class Contact implements Comparable<Contact>
     }
     
    
-    
+    public void read_contact(){
+      Scanner read=new Scanner(System.in);
+      System.out.println("Enter the contact's name:");
+      contactName=read.nextLine();
+      System.out.println("Enter the contact's phone number:");
+      phoneNumber =read.nextLine();
+      System.out.println("Enter the contact's email address:");
+      emailAddress=read.nextLine();
+      System.out.println("Enter the contact's address: ");
+      address=read.nextLine();
+      System.out.println("Enter the contact's birthday:");
+      birthday=read.nextLine();
+      System.out.println("Enter any notes for the contact:");
+      notes=read.nextLine();
+  }  
  @Override
      public void display(){
      System.out.println("Contact: "+contactName+ " phone number: "+phoneNumber+ "email address: "+ emailAddress+"address: "
