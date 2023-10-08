@@ -1,4 +1,4 @@
-package project;
+package javaapplication1;
 
 public class linkedlist<T> 
 {
