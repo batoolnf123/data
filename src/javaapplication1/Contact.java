@@ -28,7 +28,7 @@ public class Contact implements Comparable<Contact>
         this.notes = notes;
     }
 
-    public void Contact(Contact contact)
+    public void Contact(Contact contact) //joury
     {
         contactName = contact.getContactName();
         phoneNumber = contact.getPhoneNumber();
