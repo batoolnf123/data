@@ -11,13 +11,14 @@ public class linkedlist<T>
  private node<T> current;
 
 
-    public linkedlist(node<T> h) {
+    public linkedlist(node<T> h) //joury
+ {
         head = h;
         
     }
 
 
-public void add(T nweContact) 
+public void add(T nweContact) //joury
 {
         if (head == null) 
             head = new node<T> (nweContact);
@@ -28,7 +29,7 @@ public void add(T nweContact)
         System.out.println("Contact added successfully!");
 }
 
-public Contact searchbyName(String name)
+public Contact searchbyName(String name) //joury
 {
  if (head==null)
      return null;
@@ -44,7 +45,7 @@ public Contact searchbyName(String name)
     return null; 
 }
 
-public Contact searchbyemail(String email)
+public Contact searchbyemail(String email) //joury
 {
  if (head==null)
      return null;
@@ -61,7 +62,7 @@ public Contact searchbyemail(String email)
              }
     return null; 
 }
-public Contact searchbyphonenum(String num)
+public Contact searchbyphonenum(String num) //joury
 {
  if (head==null)
      return null;
@@ -78,7 +79,7 @@ public Contact searchbyphonenum(String num)
     return null; 
 }
 
-public Contact searchbyaddress(String add)
+public Contact searchbyaddress(String add) //joury
 {
  if (head==null)
      return null;
@@ -95,7 +96,7 @@ public Contact searchbyaddress(String add)
     return null; 
 }
 
-public Contact searchbybirthday(String birth)
+public Contact searchbybirthday(String birth) //joury
 {
  if (head==null)
      return null;
@@ -113,7 +114,7 @@ public Contact searchbybirthday(String birth)
     return null; 
 }
 
-public void deletContact(node<Contact> delet)
+public void deletContact(node<Contact> delet) //joury
 {
  if (head==null)
      return;
@@ -127,7 +128,7 @@ public void deletContact(node<Contact> delet)
      
 }
 
-    public void printList()
+    public void printList() //joury
     {
         current = head;
         while (current != null) {
@@ -137,35 +138,39 @@ public void deletContact(node<Contact> delet)
         System.out.println();
     }
    
-    public boolean isEmpty()
+    public boolean isEmpty() //joury
     {
         return head==null;
     }
     
-    public boolean last () 
+    public boolean last () //joury
     {
 return current.next == null;
     } 
-    public void findfirst () 
+    public void findfirst () //joury
     {
 current = head;
     }
-public void findnext () 
+public void findnext () //joury
 {
 current = current.next; 
 }
-public T retrieve() {
-return current.data; }
-public void update (T x)
+public T retrieve() //joury
+ {
+return current.data; 
+ }
+public void update (T x) //joury
 {
 current.data = x;
 }
-public boolean full ()
+public boolean full () //joury
 {
 return false;
 }
-public void remove () {
-if (current == head) {
+public void remove () //joury
+ {
+if (current == head)
+{
 head = head.next;
 }
 else {
@@ -173,13 +178,14 @@ node<T> extranode = head;
 while (extranode.next != current)
 extranode = extranode.next;
 extranode.next = current.next;
-}
+     }
 if (current.next == null)
 current = head;
 else
 current = current.next;
 }
-public void insert (T d){ 
+public void insert (T d) 
+ { 
     node<T> p=new node<T>(d);
     if(head==null){
         head=p;
