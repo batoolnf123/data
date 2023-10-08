@@ -1,16 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author batoolalfouzan
- */
-
 package project;
 
-public abstract class Contact implements Comparable
+public class Contact implements Comparable<Contact>
 {
  private String contactName;
  private String phoneNumber;
@@ -90,19 +80,20 @@ public abstract class Contact implements Comparable
         return notes;
     }
     
-    public int ComparTo(String first, String second)
-    {
-        if (first.compareTo(second)==0)
-            return 0;
-         if (first.compareTo(second)>0)
-            return 1;
-         else return -1;
-            
-    }
+   
     
  @Override
      public void display(){
      System.out.println("Contact: "+contactName+ " phone number: "+phoneNumber+ "email address: "+ emailAddress+"address: "
              +address+"birthday: "+birthday+"notes: "+notes);
  }
+
+    @Override
+    public int CompareTo(String second) {
+   if (getContactName().compareTo(second)==0)
+            return 0;
+        else   if (getContactName().compareTo(second)>0)
+            return 1;
+         else return -1;
+                }
 }
