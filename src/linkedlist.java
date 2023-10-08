@@ -1,29 +1,29 @@
 package project;
 
-public class linkedlist<Contact> 
+public class linkedlist<T> 
 {
- private node<Contact> head;
- private node<Contact> current;
- node<Contact> next;
+ private node<T> head;
+ private node<T> current;
 
-    public linkedlist(node<Contact> h) {
+
+    public linkedlist(node<T> h) {
         head = h;
-        next = null;
+        
     }
 
 
-public void add(Contact nweContact) 
+public void add(T nweContact) 
 {
         if (head == null) 
-            head = new node<Contact>(nweContact);
+            head = new node<T> (nweContact);
        
         else
-          current.next=nweContact;
+          current.next=new node<T>(nweContact);
         System.out.println("Contact added successfully!");
         
 }
 
-public node<Contact> searchbyName(String name)
+public Contact searchbyName(String name)
 {
  if (head==null)
      return null;
@@ -31,15 +31,15 @@ public node<Contact> searchbyName(String name)
      current=head;
      while(current!=null)
      {
-         if ((node<Contact>)current.getData().getContactName()==(node<Contact>)search.getData().getContactName())
-             return current;
+         if (((Contact)current.getData()).getContactName().equals(name))
+             return (Contact)current.getData();
          else 
            current=current.next;
      }
     return null; 
 }
 
-public node<Contact> searchbyemail(String email)
+public Contact searchbyemail(String email)
 {
  if (head==null)
      return null;
@@ -47,14 +47,16 @@ public node<Contact> searchbyemail(String email)
      current=head;
      while(current!=null)
      {
-         if ((node<Contact>)current.getData().getEmailAddress()==(node<Contact>)search.getData().getEmailAddress())
-             return current;
+         if (((Contact)current.getData()).getEmailAddress().equals(email))
+             return (Contact)current.getData();
+
          else 
-           current=current.next;
-     }
+             current=current.next;
+
+             }
     return null; 
 }
-public node<Contact> searchbphonenum(String email)
+public Contact searchbyphonenum(String num)
 {
  if (head==null)
      return null;
@@ -62,15 +64,16 @@ public node<Contact> searchbphonenum(String email)
      current=head;
      while(current!=null)
      {
-         if ((node<Contact>)current.getData().getPhoneNumber()==(node<Contact>)search.getData().getPhoneNumber())
-             return current;
+         if (((Contact)current.getData()).getPhoneNumber().equals(num))
+             
+             return (Contact)current.getData();
          else 
            current=current.next;
      }
     return null; 
 }
 
-public node<Contact> searchbyaddress(String email)
+public Contact searchbyaddress(String add)
 {
  if (head==null)
      return null;
@@ -78,15 +81,16 @@ public node<Contact> searchbyaddress(String email)
      current=head;
      while(current!=null)
      {
-         if ((node<Contact>)current.getData().getAddress()==(node<Contact>)search.getData().getAddress())
-             return current;
+         if (((Contact)current.getData()).getAddress().equals(add))
+             
+             return (Contact)current.getData();
          else 
            current=current.next;
      }
     return null; 
 }
 
-public node<Contact> searchbybirthday(String email)
+public Contact searchbybirthday(String birth)
 {
  if (head==null)
      return null;
@@ -94,8 +98,10 @@ public node<Contact> searchbybirthday(String email)
      current=head;
      while(current!=null)
      {
-         if ((node<Contact>)current.getData().getBirthday()==(node<Contact>)search.getData().getBirthday())
-             return current;
+         if (((Contact)current.getData()).getBirthday().equals(birth))
+             
+           return (Contact)current.getData();
+
          else 
            current=current.next;
      }
@@ -127,4 +133,3 @@ public void deletContact(node<Contact> delet)
     }
    
 }
-
