@@ -1,4 +1,9 @@
-package project;
+package javaapplication1;
+
+
+import javaapplication1.node;
+
+
 
 public class linkedlist<T> 
 {
@@ -149,7 +154,7 @@ public void findnext ()
 {
 current = current.next; 
 }
-public T retrieve () {
+public T retrieve() {
 return current.data; }
 public void update (T x)
 {
@@ -174,5 +179,26 @@ current = head;
 else
 current = current.next;
 }
+public void insert (T d){ 
+    node<T> p=new node<T>(d);
+    if(head==null){
+        head=p;
+        current=p;
+    }else{
+        p.next=current.next;
+        current.next=p;
+        current=p;
+    }}
+    public boolean search(T x){
+        node<T> temp=head;
+        while(temp!=null){
+            if(temp.data.equals(x))
+                return true;
+            else
+                temp=temp.next;
+        } return false;
+    }
+//    batool wrote insert and search, Joury wrote the rest
 }
+
 

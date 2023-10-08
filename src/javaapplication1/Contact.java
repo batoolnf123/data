@@ -1,5 +1,8 @@
 package javaapplication1;
 
+
+
+import javaapplication1.Comparable;
 import java.util.Scanner;
 
 public class Contact implements Comparable<Contact>
