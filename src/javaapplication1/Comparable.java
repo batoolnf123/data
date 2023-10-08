@@ -2,9 +2,10 @@ package javaapplication1;
 
 
 
-interface Comparable<T> {
+interface Comparable<T>  //joury
+    {
     
-  public int CompareTo(String second);  
-  public void display();
+  public int CompareTo(String second);  //joury
+  public void display(); //joury
 }
 
