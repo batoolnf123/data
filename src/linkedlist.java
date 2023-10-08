@@ -1,4 +1,4 @@
-package javaapplication1;
+package project;
 
 public class linkedlist<T> 
 {
@@ -19,8 +19,8 @@ public void add(T nweContact)
        
         else
           current.next=new node<T>(nweContact);
+        current = current.next;
         System.out.println("Contact added successfully!");
-        
 }
 
 public Contact searchbyName(String name)
@@ -132,4 +132,47 @@ public void deletContact(node<Contact> delet)
         System.out.println();
     }
    
+    public boolean isEmpty()
+    {
+        return head==null;
+    }
+    
+    public boolean last () 
+    {
+return current.next == null;
+    } 
+    public void findfirst () 
+    {
+current = head;
+    }
+public void findnext () 
+{
+current = current.next; 
 }
+public T retrieve () {
+return current.data; }
+public void update (T x)
+{
+current.data = x;
+}
+public boolean full ()
+{
+return false;
+}
+public void remove () {
+if (current == head) {
+head = head.next;
+}
+else {
+node<T> extranode = head;
+while (extranode.next != current)
+extranode = extranode.next;
+extranode.next = current.next;
+}
+if (current.next == null)
+current = head;
+else
+current = current.next;
+}
+}
+
