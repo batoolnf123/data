@@ -18,13 +18,14 @@ public class linkedlist<T>
     }
 
 
-public void add(T nweContact) //joury
+public void add(T newContact) //joury
 {
         if (head == null) 
-            head = new node<T> (nweContact);
+            head = new node<T> (newContact);
        
         else
-          current.next=new node<T>(nweContact);
+          current.next=new node<T>(newContact);
+        
         current = current.next;
         System.out.println("Contact added successfully!");
 }
@@ -35,14 +36,15 @@ public Contact searchbyName(String name) //joury
      return null;
  else
      current=head;
-     while(current!=null)
+ 
+ while(current!=null)
      {
          if (((Contact)current.getData()).getContactName().equals(name))
              return (Contact)current.getData();
          else 
            current=current.next;
      }
-    return null; 
+ return null; 
 }
 
 public Contact searchbyemail(String email) //joury
@@ -51,7 +53,8 @@ public Contact searchbyemail(String email) //joury
      return null;
  else
      current=head;
-     while(current!=null)
+
+ while(current!=null)
      {
          if (((Contact)current.getData()).getEmailAddress().equals(email))
              return (Contact)current.getData();
@@ -60,7 +63,7 @@ public Contact searchbyemail(String email) //joury
              current=current.next;
 
              }
-    return null; 
+ return null; 
 }
 public Contact searchbyphonenum(String num) //joury
 {
@@ -68,7 +71,8 @@ public Contact searchbyphonenum(String num) //joury
      return null;
  else
      current=head;
-     while(current!=null)
+ 
+ while(current!=null)
      {
          if (((Contact)current.getData()).getPhoneNumber().equals(num))
              
@@ -76,7 +80,8 @@ public Contact searchbyphonenum(String num) //joury
          else 
            current=current.next;
      }
-    return null; 
+ 
+  return null; 
 }
 
 public Contact searchbyaddress(String add) //joury
@@ -85,15 +90,18 @@ public Contact searchbyaddress(String add) //joury
      return null;
  else
      current=head;
-     while(current!=null)
+ 
+ while(current!=null)
      {
          if (((Contact)current.getData()).getAddress().equals(add))
              
              return (Contact)current.getData();
+         
          else 
            current=current.next;
      }
-    return null; 
+ 
+  return null; 
 }
 
 public Contact searchbybirthday(String birth) //joury
@@ -102,7 +110,8 @@ public Contact searchbybirthday(String birth) //joury
      return null;
  else
      current=head;
-     while(current!=null)
+ 
+ while(current!=null)
      {
          if (((Contact)current.getData()).getBirthday().equals(birth))
              
@@ -123,6 +132,7 @@ public void deletContact(node<Contact> delet) //joury
  {
      if(current.data==delet.data)
          current.prev.next=current.next;
+     
      current=current.next;
  }
      
@@ -175,14 +185,16 @@ head = head.next;
 }
 else {
 node<T> extranode = head;
+
 while (extranode.next != current)
-extranode = extranode.next;
+    extranode = extranode.next;
+
 extranode.next = current.next;
      }
 if (current.next == null)
-current = head;
+    current = head;
 else
-current = current.next;
+    current = current.next;
 }
 public void insert (T d) 
  { 
@@ -190,7 +202,8 @@ public void insert (T d)
     if(head==null){
         head=p;
         current=p;
-    }else{
+    }
+    else{
         p.next=current.next;
         current.next=p;
         current=p;
@@ -205,6 +218,8 @@ public void insert (T d)
         } return false;
     }
 //    batool wrote insert and search, Joury wrote the rest
+
 }
+
 
 
