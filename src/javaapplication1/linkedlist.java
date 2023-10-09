@@ -48,98 +48,104 @@ public void add(T nweContact) //joury
             current = current.next;
         }}
 
-  public Contact searchbyName(String name) //joury
+  public void searchbyName(String name) //joury
     {
         if (head == null) {
-            return null;
+          System.out.println("no contact");   
+            return ;
         } else {
             current = head;
-        }
+        
 
         while (current != null) {
             if (((Contact) current.getData()).getContactName().equals(name)) {
-                return (Contact) current.getData();
-            } else {
+                System.out.println((Contact) current.getData());
+                return;}
+            else {
                 current = current.next;
             }
-        }
-        return null;
+        }}
     }
 
-    public Contact searchbyemail(String email) //joury
+    public void searchbyemail(String email) //joury
     {
         if (head == null) {
-            return null;
+           System.out.println("no contact");   
+            return ;
         } else {
             current = head;
-        }
-
         while (current != null) {
             if (((Contact) current.getData()).getEmailAddress().equals(email)) {
-                return (Contact) current.getData();
-            } else {
-                current = current.next;
-            }
-
-        }
-        return null;
+                System.out.println((Contact) current.getData());
+                return ;}
+               current = current.next;
+               
+            } }
+       
     }
 
-    public Contact searchbyphonenum(String num) //joury
+    public void searchbyphonenum(String num) //joury
     {
         if (head == null) {
-            return null;
+           System.out.println("no contact");   
+
+            return ;
         } else {
             current = head;
-        }
-
         while (current != null) {
             if (((Contact) current.getData()).getPhoneNumber().equals(num)) {
-                return (Contact) current.getData();
+                               System.out.println((Contact) current.getData());
+
+                return;
+                
             } else {
                 current = current.next;
             }
         }
 
-        return null;
-    }
+   
+    }}
 
-    public Contact searchbyaddress(String add) //joury
+    public void searchbyaddress(String add) //joury
     {
         if (head == null) {
-            return null;
+            
+            return ;
         } else {
             current = head;
-        }
+        
 
         while (current != null) {
             if (((Contact) current.getData()).getAddress().equals(add)) {
-                return (Contact) current.getData();
+                                System.out.println((Contact) current.getData());
+
+                return ;
             } else {
                 current = current.next;
             }
         }
 
-        return null;
-    }
+        }    }
 
-    public Contact searchbybirthday(String birth) //joury
+    public void searchbybirthday(String birth) //joury
     {
         if (head == null) {
-            return null;
+                            System.out.println("no contact");
+
+            return ;
         } else {
             current = head;
-        }
-
+       
         while (current != null) {
             if (((Contact) current.getData()).getBirthday().equals(birth)) {
-                return (Contact) current.getData();
+                System.out.println((Contact) current.getData());
+
+return;
             } else {
                 current = current.next;
             }
         }
-        return null;
-    }
+    }    }
     
 
     public void printList() //joury
@@ -231,6 +237,8 @@ public void add(T nweContact) //joury
         return false;
     }
 //    batool wrote insert and search, Joury wrote the rest
+
+}
 
 }
 
