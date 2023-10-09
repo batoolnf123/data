@@ -19,9 +19,9 @@ public class linkedlist<T> {
 
 public void add(T nweContact) //joury
 {
-     if (search()) 
+     if (search()) {
              System.out.println("this contact is already exist");
-     return;
+     return;}
         if (head == null) 
             head = new node<T> (nweContact);
        
@@ -46,7 +46,7 @@ public void add(T nweContact) //joury
             }
 
             current = current.next;
-        }
+        }}
 
   public Contact searchbyName(String name) //joury
     {
@@ -140,7 +140,7 @@ public void add(T nweContact) //joury
         }
         return null;
     }
-    }
+    
 
     public void printList() //joury
     {
