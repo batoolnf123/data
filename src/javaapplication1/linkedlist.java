@@ -17,7 +17,7 @@ public class linkedlist<T> {
 
     }
 
-public void add(T nweContact) 
+public void add(T nweContact) //joury
 {
      if (search()) 
              System.out.println("this contact is already exist");
@@ -31,7 +31,24 @@ public void add(T nweContact)
         System.out.println("Contact added successfully!");
 }
 
-    public Contact searchbyName(String name) //joury
+   
+
+    public void deletContact(node<Contact> delet) //joury
+    {
+        if (head == null) {
+            return;
+        } else {
+            current = head;
+        }
+        while (current != null) {
+            if (current.data == delet.data) {
+                current.prev.next = current.next;
+            }
+
+            current = current.next;
+        }
+
+  public Contact searchbyName(String name) //joury
     {
         if (head == null) {
             return null;
@@ -123,22 +140,6 @@ public void add(T nweContact)
         }
         return null;
     }
-
-    public void deletContact(node<Contact> delet) //joury
-    {
-        if (head == null) {
-            return;
-        } else {
-            current = head;
-        }
-        while (current != null) {
-            if (current.data == delet.data) {
-                current.prev.next = current.next;
-            }
-
-            current = current.next;
-        }
-
     }
 
     public void printList() //joury
