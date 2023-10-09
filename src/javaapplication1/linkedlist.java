@@ -16,20 +16,19 @@ public class linkedlist<T> {
 
     }
 
-    public void add(T newContact) //joury
-    {
-        if (search()) 
-            return System.out.println("this contact is already exist");
-        else{
-        if (head == null) {
-            head = new node<T>(newContact);
-        } else {
-            current.next = new node<T>(newContact);
-        }
-
+public void add(T nweContact) 
+{
+     if (search()) 
+             System.out.println("this contact is already exist");
+     return;
+        if (head == null) 
+            head = new node<T> (nweContact);
+       
+        else
+          current.next=new node<T>(nweContact);
         current = current.next;
         System.out.println("Contact added successfully!");
-    }}
+}
 
     public Contact searchbyName(String name) //joury
     {
