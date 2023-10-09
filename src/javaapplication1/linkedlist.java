@@ -16,7 +16,7 @@ public class linkedlist<T> {
 
     }
 
-public void add(T nweContact) 
+public void add(T nweContact) //joury
 {
      if (search()) 
              System.out.println("this contact is already exist");
