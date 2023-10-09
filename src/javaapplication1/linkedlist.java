@@ -48,106 +48,106 @@ public void add(T nweContact) //joury
             current = current.next;
         }}
 
-  public void searchbyName(String name) //joury
+     public void searchbyName(String name) //joury
     {
         if (head == null) {
-          System.out.println("no contact");   
-            return ;
+            System.out.println("no contact");
+            return;
         } else {
             current = head;
-        
 
-        while (current != null) {
-            if (((Contact) current.getData()).getContactName().equals(name)) {
-                System.out.println((Contact) current.getData());
-                return;}
-            else {
-                current = current.next;
+            while (current != null) {
+                if (((Contact) current.getData()).getContactName().equals(name)) {
+                    System.out.println((Contact) current.getData());
+                    return ;}
+                    current = current.next;
+                }
             }
-        }}
-    }
-
+        }
+    
     public void searchbyemail(String email) //joury
     {
         if (head == null) {
-           System.out.println("no contact");   
-            return ;
+            System.out.println("no contact");
+            return;
         } else {
             current = head;
-        while (current != null) {
-            if (((Contact) current.getData()).getEmailAddress().equals(email)) {
-                System.out.println((Contact) current.getData());
-                return ;}
-               current = current.next;
-               
-            } }
-       
-    }
+            while (current != null) {
+                if (((Contact) current.getData()).getEmailAddress().equals(email)) {
+                    System.out.println((Contact) current.getData());
+                    return;}
+                                current = current.next;
+
+                }
+
+            }
+        }
+
+    
 
     public void searchbyphonenum(String num) //joury
     {
         if (head == null) {
-           System.out.println("no contact");   
+            System.out.println("no contact");
 
-            return ;
+            return;
         } else {
             current = head;
-        while (current != null) {
-            if (((Contact) current.getData()).getPhoneNumber().equals(num)) {
-                               System.out.println((Contact) current.getData());
+            while (current != null) {
+                if (((Contact) current.getData()).getPhoneNumber().equals(num)) {
+                    System.out.println((Contact) current.getData());
 
-                return;
+                    return;}
+
+                 
+                    current = current.next;
                 
-            } else {
-                current = current.next;
             }
-        }
 
-   
-    }}
+        }
+    }
 
     public void searchbyaddress(String add) //joury
     {
         if (head == null) {
-            
-            return ;
+
+            return;
         } else {
             current = head;
-        
 
-        while (current != null) {
-            if (((Contact) current.getData()).getAddress().equals(add)) {
-                                System.out.println((Contact) current.getData());
+            while (current != null) {
+                if (((Contact) current.getData()).getAddress().equals(add)) {
+                    System.out.println((Contact) current.getData());
 
-                return ;
-            } else {
-                current = current.next;
+                    return;
+                }  
+                    current = current.next;
+                
             }
-        }
 
-        }    }
+        }
+    }
 
     public void searchbybirthday(String birth) //joury
     {
         if (head == null) {
-                            System.out.println("no contact");
+            System.out.println("no contact");
 
-            return ;
+            return;
         } else {
             current = head;
-       
-        while (current != null) {
-            if (((Contact) current.getData()).getBirthday().equals(birth)) {
-                System.out.println((Contact) current.getData());
 
-return;
-            } else {
-                current = current.next;
+            while (current != null) {
+                if (((Contact) current.getData()).getBirthday().equals(birth)) {
+                    System.out.println((Contact) current.getData());
+
+                    return;
+                } 
+                    current = current.next;
+                
             }
         }
-    }    }
-    
-
+    }
     public void printList() //joury
     {
         current = head;
@@ -240,7 +240,7 @@ return;
 
 }
 
-}
+
 
 
 
