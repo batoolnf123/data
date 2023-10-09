@@ -2,17 +2,16 @@ package javaapplication1;
 
 
 
-import javaapplication1.Comparable;
 import java.util.Scanner;
 
 public class Contact implements Comparable<Contact> {
 
-    private String contactName;
-    private String phoneNumber;
-    private String emailAddress;
-    private String address;
-    private String birthday;
-    private String notes;
+    public String contactName;
+    public String phoneNumber;
+    public String emailAddress;
+    public String address;
+    public String birthday;
+    public String notes;
     
     //might add attribute
     //public linkedlist<Event> contactEvent = new linkedlist<Event>(); //anoud
@@ -101,7 +100,7 @@ public class Contact implements Comparable<Contact> {
         return notes;
     }
 
-    public void read_contact() {
+    public void read_contact() { //Batool
         Scanner read = new Scanner(System.in);
         System.out.println("Enter the contact's name:");
         contactName = read.nextLine();

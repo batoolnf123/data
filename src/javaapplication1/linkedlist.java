@@ -1,15 +1,16 @@
 package javaapplication1;
 
 
-import javaapplication1.node;
-
-
 
 public class linkedlist<T> {
 
     private node<T> head;
     private node<T> current;
 
+    public linkedlist() {
+    }
+
+    
     public linkedlist(node<T> h) //joury
     {
         head = h;
