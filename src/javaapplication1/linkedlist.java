@@ -48,105 +48,97 @@ public void add(T nweContact) //joury
             current = current.next;
         }}
 
-     public void searchbyName(String name) //joury
+         public Contact searchByName(String name) //joury
     {
         if (head == null) {
-            System.out.println("no contact");
-            return;
+            return null;
         } else {
             current = head;
-
-            while (current != null) {
-                if (((Contact) current.getData()).getContactName().equals(name)) {
-                    System.out.println((Contact) current.getData());
-                    return ;}
-                    current = current.next;
-                }
-            }
-        }
-    
-    public void searchbyemail(String email) //joury
-    {
-        if (head == null) {
-            System.out.println("no contact");
-            return;
-        } else {
-            current = head;
-            while (current != null) {
-                if (((Contact) current.getData()).getEmailAddress().equals(email)) {
-                    System.out.println((Contact) current.getData());
-                    return;}
-                                current = current.next;
-
-                }
-
-            }
         }
 
-    
-
-    public void searchbyphonenum(String num) //joury
-    {
-        if (head == null) {
-            System.out.println("no contact");
-
-            return;
-        } else {
-            current = head;
-            while (current != null) {
-                if (((Contact) current.getData()).getPhoneNumber().equals(num)) {
-                    System.out.println((Contact) current.getData());
-
-                    return;}
-
-                 
-                    current = current.next;
-                
+        while (current != null) {
+            if (((Contact) current.getData()).getContactName().equals(name)) {
+                return (Contact) current.getData();
+            } 
+                current = current.next;
             }
-
-        }
+        
+        return null;
     }
 
-    public void searchbyaddress(String add) //joury
+    public Contact SearchByEmail(String email) //joury
     {
         if (head == null) {
-
-            return;
+            return null;
         } else {
             current = head;
+        }
 
-            while (current != null) {
-                if (((Contact) current.getData()).getAddress().equals(add)) {
-                    System.out.println((Contact) current.getData());
-
-                    return;
-                }  
-                    current = current.next;
-                
+        while (current != null) {
+            if (((Contact) current.getData()).getEmailAddress().equals(email)) {
+                return (Contact) current.getData();
+            } 
+                current = current.next;
             }
 
-        }
+        
+        return null;
     }
 
-    public void searchbybirthday(String birth) //joury
+    public Contact SearchByPhoneNumber(String num) //joury
     {
         if (head == null) {
-            System.out.println("no contact");
-
-            return;
+            return null;
         } else {
             current = head;
-
-            while (current != null) {
-                if (((Contact) current.getData()).getBirthday().equals(birth)) {
-                    System.out.println((Contact) current.getData());
-
-                    return;
-                } 
-                    current = current.next;
-                
-            }
         }
+
+        while (current != null) {
+            if (((Contact) current.getData()).getPhoneNumber().equals(num)) {
+                return (Contact) current.getData();
+            }
+                current = current.next;
+            
+        }
+
+        return null;
+    }
+
+    public Contact SearchByAddress(String add) //joury
+    {
+        if (head == null) {
+            return null;
+        } else {
+            current = head;
+        }
+
+        while (current != null) {
+            if (((Contact) current.getData()).getAddress().equals(add)) {
+                return (Contact) current.getData();
+            } 
+                current = current.next;
+            
+        }
+
+        return null;
+    }
+
+    public Contact SearchByBirthday(String birth) //joury
+    {
+        if (head == null) {
+            return null;
+        } else {
+            current = head;
+        }
+
+        while (current != null) {
+            if (((Contact) current.getData()).getBirthday().equals(birth)) {
+                return (Contact) current.getData();
+            } 
+                current = current.next;
+            }
+        
+        return null;
     }
     public void printList() //joury
     {
