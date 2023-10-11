@@ -17,19 +17,42 @@ public class linkedlist<T> {
 
     }
 
-public void add(T nweContact) //joury
-{
-     if (search(nweContact)) {
-             System.out.println("this contact is already exist");
-     return;}
-        if (head == null) 
-            head = new node<T> (nweContact);
-       
-        else
-          current.next=new node<T>(nweContact);
-        current = current.next;
-        System.out.println("Contact added successfully!");
-}
+    public void add(T x) //joury 
+    { 
+        node<T> nweContact=new node<T>(x);
+        //case1
+     if (head == null) 
+            head = current=nweContact;
+            //case2
+   else     if (search(x)) {
+            System.out.println("this contact is already exist");
+                return; }
+            //case3
+            else 
+            if(((Contact)x).CompareTo(((Contact) head.data).getContactName())==0){
+                  current.next=nweContact;
+                  current=nweContact;
+           } //case4
+             else
+           if(((Contact)x).CompareTo(((Contact) head.data).getContactName())<0){
+              nweContact.next=head;
+              head=nweContact;
+           }
+           //case5 
+           else{
+            node<T> current2=head;
+            node<T> pointer=null;
+           
+      while(current2!=null && (((Contact)current2.data).CompareTo(((Contact)x).getContactName())<=0))  
+      {
+          pointer=current2;
+          current2=current2.next;
+      }
+      pointer.next=nweContact;
+      nweContact.next=pointer; }  
+              System.out.println("Contact added successfully!");
+
+      }   
 
    
 
