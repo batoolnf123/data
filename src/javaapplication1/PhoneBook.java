@@ -8,7 +8,6 @@ package javaapplication1;
  *
  * @author batoolalfouzan
  */
-import java.util.Date;
 
 import java.util.Scanner;
 
@@ -49,68 +48,61 @@ public class PhoneBook {
         }
 
     }
-  public linkedlist<Contact> searchByFirstName(String name) //joury
-    {
-    
-        if (contacts.isEmpty()) {
-            return null;
-        } 
-         
-          contacts.findfirst();
-        
- linkedlist <Contact> ContactsList=new linkedlist<Contact>();
-    
-        while (!contacts.last()) {
-            if (((Contact) contacts.retrieve()).getContactName().equals(name))
-            {
-                ContactsList.addSortedContact(contacts.retrieve());
-            } 
-            contacts.findnext();
-            }
-        
-     return ContactsList;
-    }
+
     //new? add ev/search t and cn ev/sched/ printallev / dis ev done. +wtvr m did? 
     public static Event searchEventTitle(String n) { //anoud check after bool
         if (events.isEmpty()) {
             return null;
         }
-            events.findfirst();
-            while (!events.last()) {
-                if (events.retrieve().getTitle().equals(n)) 
-                    return events.retrieve();
-              
-                events.findnext();
-            }
-
+        events.findfirst();
+        while (!events.last()) {
             if (events.retrieve().getTitle().equals(n)) {
                 return events.retrieve();
+            }
+
+            events.findnext();
+        }
+
+        if (events.retrieve().getTitle().equals(n)) {
+            return events.retrieve();
         } else {
             return null;
         }
-       
+
     }
-    
+
     public static Event searchEventContact(String n) { //anoud check after bool
         if (events.isEmpty()) {
             return null;
         }
-            events.findfirst();
-            while (!events.last()) {
-                if (events.retrieve().getContactName().equals(n)) 
-                    return events.retrieve();
-              
-                events.findnext();
-            }
-
+        events.findfirst();
+        while (!events.last()) {
             if (events.retrieve().getContactName().equals(n)) {
                 return events.retrieve();
+            }
+
+            events.findnext();
+        }
+
+        if (events.retrieve().getContactName().equals(n)) {
+            return events.retrieve();
         } else {
             return null;
         }
-       
+
     }
     
+    public void PrintEventContacts(Event e) {
+      
+        e.contactsinEvent.findfirst();
+        while(!e.contactsinEvent.last()) {
+            System.out.println(e.contactsinEvent.retrieve().getContactName());
+            e.contactsinEvent.findnext();
+        }
+        
+        System.out.println(e.contactsinEvent.retrieve().getContactName());
+  
+    }
     
     
     
@@ -128,13 +120,11 @@ public class PhoneBook {
 
     public static void AddEvent(Event e) {//check
         Event found = searchEventTitle(e.getTitle());
-        if (found==null) {
+        if (found == null) {
             events.addSortedEvent(e);
         }
 
     }
-
-   
 
     public static void DeleteContact(String m) {
         if (contacts.isEmpty()) {
@@ -172,8 +162,6 @@ public class PhoneBook {
             System.out.println("There are no events to print");
         }
     }
-    
-    
 
     public void schedulingEvent(Event event1, String name) { //anoud
 
@@ -204,8 +192,25 @@ public class PhoneBook {
     }
 
     public boolean hasConflict(Event e1, Contact c1) {
-        Linkedlist<>
-    
+        if (c1.contactEvents.isEmpty()) {
+            return false;
+        }
+
+        c1.contactEvents.findfirst();
+
+        while (!c1.contactEvents.last()) {
+            if (c1.contactEvents.retrieve().getDate().equals(e1.getDate()) && c1.contactEvents.retrieve().getTime().equals(e1.getTime())) {
+                return true; //same date and time in both events so there is a conflict
+            }
+            c1.contactEvents.findnext();
+        }
+
+        if (c1.contactEvents.retrieve().getDate().equals(e1.getDate()) && c1.contactEvents.retrieve().getTime().equals(e1.getTime())) {
+            return true; //check for the last event in list
+        } else {
+            return false;
+        }
+
     }
 
     //end of new eventm
