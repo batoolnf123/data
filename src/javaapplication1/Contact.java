@@ -117,7 +117,7 @@ public class Contact implements Comparable<Contact> {
     }
 
     @Override
-    public void displayContact() //joury
+    public void display() //joury
     {
         System.out.println("Contact: " + contactName);
         System.out.println(" phone number: " + phoneNumber);
