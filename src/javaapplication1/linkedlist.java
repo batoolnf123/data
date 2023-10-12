@@ -8,6 +8,10 @@ public class linkedlist<T> {
     private node<T> current;
 
     public linkedlist() {
+        
+        current = null;
+       head= null;
+    
     }
 
     
