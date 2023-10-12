@@ -245,7 +245,7 @@ public class PhoneBook {
         return choice;
     }
 
-    public static void main(String[] args) {
+   public static void main(String[] args) {
 
         System.out.println("Welcome to the Linked List Phonebook!");
         int choice;
@@ -271,7 +271,7 @@ public class PhoneBook {
                                   System.out.println("Contact not found!");
                             else{System.out.println("Contact found!");
                                 
-                            (contacts.searchByName(name)).displayContact();
+                            (contacts.searchByName(name)).display();
                             }
                                 
                             break;
@@ -283,7 +283,7 @@ public class PhoneBook {
                                   System.out.println("Contact not found!");
                             else{System.out.println("Contact found!");
                                 
-                            (contacts.SearchByPhoneNumber(phonNumber)).displayContact();
+                            (contacts.SearchByPhoneNumber(phonNumber)).display();
                             }
                             break;
                         case 3:
@@ -293,7 +293,7 @@ public class PhoneBook {
                                 System.out.println("Contact not found!");
                             else{System.out.println("Contact found!");
                                 
-                            (contacts.SearchByEmail(email1)).displayContact();
+                            (contacts.SearchByEmail(email1)).display();
                             }
                             break;
                         case 4:
@@ -303,7 +303,7 @@ public class PhoneBook {
                                 System.out.println("Contact not found!");
                             else{System.out.println("Contact found!");
                                 
-                            (contacts.SearchByAddress(address1)).displayContact();
+                            (contacts.SearchByAddress(address1)).display();
                             }
                             break;
                         case 5:
@@ -313,7 +313,7 @@ public class PhoneBook {
                                 System.out.println("Contact not found!");
                             else{System.out.println("Contact found!");
                                 
-                            (contacts.SearchByBirthday(bday)).displayContact();
+                            (contacts.SearchByBirthday(bday)).display();
                             }
                             break;
                         
@@ -336,8 +336,7 @@ public class PhoneBook {
                 case 6:
                     System.out.println("Enter the contact's first name:");
                     String name = input.nextLine();
-                    c.setContactName(name);
-                    display();
+                    
                     break;
 
                 case 7:
