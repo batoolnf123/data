@@ -13,34 +13,74 @@ package javaapplication1;
   public class Event implements Comparable<Event> {
 
    private String title;
-    private Date date; 
+    private String date; 
     private String time;
     private String location;
     
-    linkedlist<String> contactName;
+    linkedlist<Contact> contactsinEvent; //change name
+    linkedlist<Event> eventsinEvent; //check?
     
-
+   Contact involvedContact ;
+   String contactName; 
+    
+ 
     public Event() {
         this.title = "";
-        this.date = null;
+        this.date = "";
         this.time = "";
         this.location = "";
-        this.contactName = new linkedlist<String>();
+        this.contactName = "";
 
     }
     //settersgetters?
     
 
-    @Override
-    public int CompareTo(String second) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+   public void setContactName(String contactName) {
+        this.contactName = contactName;
     }
 
-    @Override
-    public void display() { //anoud
-        System.out.println( "title=" + title + ", date=" + date + ", time=" + time + ", location=" + location + ", contact name=" + contactName + '}' );
+
+    public void setInvolvedContact(Contact involvedContact) {
+        this.involvedContact = involvedContact;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public String getContactName() {
+        return contactName;
+    }
+
+   @Override
+     public int CompareTo(String second) //anoud
+    {
+        if (getTitle().compareTo(second) == 0) {
+            return 0;
+        } else if (getTitle().compareTo(second) > 0) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+    
 
     
+    
+    public void display() { //anoud
+        System.out.println("Event title:" + title);
+        System.out.println("Contact name:" + contactName );
+        System.out.println("Event date and time (MM/DD/YYYY HH:MM):" + date + time);
+        System.out.println("Event location:" + location);
+    }
     
 }
+
