@@ -14,45 +14,19 @@ import java.util.Scanner;
 
 public class PhoneBook {
 
-    static linkedlist<Contact> contacts;
-public static Scanner input = new Scanner (System.in);
+    public static linkedlist<Event> events;
+    public static linkedlist<Contact> contacts;
+
+    public static Scanner input = new Scanner(System.in);
+
     public PhoneBook() {
         contacts = new linkedlist<Contact>();
+        events = new linkedlist<Event>();
+
     }
 
-    public PhoneBook(linkedlist<Contact> contacts) {
-        this.contacts = contacts;
-    }
-
-    public static void AddSortedUser(Contact d) {
-        if (contacts.isEmpty()) {
-            contacts.insert(d);
-            System.out.println("contact added successfully");
-            return;
-        } else {
-            contacts.findfirst();
-            if (d.CompareTo(contacts.retrieve().getContactName()) < 0) {
-                Contact c = new Contact(contacts.retrieve());
-                contacts.update(d);
-                contacts.insert(c);
-                System.out.println("contact added successfully");
-                return;
-            } else {
-                while (!contacts.last() && (contacts.retrieve().CompareTo(d.getContactName()) <= 0)) {
-                    contacts.findnext();
-                }
-
-                if (contacts.retrieve().CompareTo(d.getContactName()) > 0) {
-                    Contact c = new Contact(contacts.retrieve());
-                    contacts.update(d);
-                    contacts.insert(c);
-                    System.out.println("contact added successfully");
-                } else {
-                    d.display();
-                    contacts.insert(d);
-                }
-            }
-        }
+    public PhoneBook(linkedlist<Contact> contactlist) { //check?
+        contacts = contactlist;
     }
 
     public static boolean search(Contact c) {
@@ -76,14 +50,71 @@ public static Scanner input = new Scanner (System.in);
 
     }
 
+    //new? add ev/search t and cn ev/sched/ printallev / dis ev done. +wtvr m did? 
+    public static Event searchEventTitle(String n) { //anoud check after bool
+        if (events.isEmpty()) {
+            return null;
+        }
+            events.findfirst();
+            while (!events.last()) {
+                if (events.retrieve().getTitle().equals(n)) 
+                    return events.retrieve();
+              
+                events.findnext();
+            }
+
+            if (events.retrieve().getTitle().equals(n)) {
+                return events.retrieve();
+        } else {
+            return null;
+        }
+       
+    }
+    
+    public static Event searchEventContact(String n) { //anoud check after bool
+        if (events.isEmpty()) {
+            return null;
+        }
+            events.findfirst();
+            while (!events.last()) {
+                if (events.retrieve().getContactName().equals(n)) 
+                    return events.retrieve();
+              
+                events.findnext();
+            }
+
+            if (events.retrieve().getContactName().equals(n)) {
+                return events.retrieve();
+        } else {
+            return null;
+        }
+       
+    }
+    
+    
+    
+    
+    
+    
+
     public static void AddContact(Contact c) {
         boolean found = search(c);
         if (!found) {
-            AddSortedUser(c);
-        }
-        else
+            contacts.addSortedContact(c);
+        } else {
             System.out.println("contact couldn't be added");
+        }
     }
+
+    public static void AddEvent(Event e) {//check
+        Event found = searchEventTitle(e.getTitle());
+        if (found==null) {
+            events.addSortedEvent(e);
+        }
+
+    }
+
+   
 
     public static void DeleteContact(String m) {
         if (contacts.isEmpty()) {
@@ -103,10 +134,62 @@ public static Scanner input = new Scanner (System.in);
             contacts.remove();
             System.out.println(m + " This contact has been deleted");
         }
+    }
+
+    //event new methods
+    public static void PrintAllEvents() { //is this o of n??? +only title or all data?
+        if (!events.isEmpty()) {
+            events.findfirst();
+            while (!events.last()) {
+                // for (int i = 0 ; i < events.size  ; i++) and del the rep
+
+                System.out.println(events.retrieve().getTitle());
+                events.findnext();
+            }
+            System.out.println(events.retrieve().getTitle());
+
+        } else {
+            System.out.println("There are no events to print");
+        }
+    }
+    
+    
+
+    public void schedulingEvent(Event event1, String name) { //anoud
+
+        Contact contact1 = contacts.searchByName(name);//search in all contacts or in ev contact?
+
+        if (contact1 != null && !hasConflict(event1, contact1)) {
+
+            contact1.contactEvents.addSortedEvent(event1); //imp?
+
+            event1.contactsinEvent.addSortedContact(contact1);
+
+            event1.eventsinEvent.addSortedEvent(event1);
+
+            event1.setInvolvedContact(contact1);
+            event1.setContactName(name);
+
+            System.out.println("Event scheduled successfully!");
+            AddEvent(event1); //is this correct?
+
+        } else if (contact1 == null) {
+            System.out.println("Can't schedule event, because this contact doesn't exist ");
+
+        } else if (hasConflict(event1, contact1)) {
+            System.out.println("Can't schedule event, because this contact has a conflict with a scheduled event");
+
+        }
 
     }
-    public static int menu ()
-    {
+
+    public boolean hasConflict(Event e1, Contact c1) {
+        Linkedlist<>
+    
+    }
+
+    //end of new eventm
+    public static int menu() {
         System.out.println("Please choose an option:");
         System.out.println("1. Add a contact");
         System.out.println("2. Search for a contact");
@@ -120,8 +203,8 @@ public static Scanner input = new Scanner (System.in);
         int choice = input.nextInt();
         return choice;
     }
-    public static int submenu2()
-    {
+
+    public static int submenu2() {
         System.out.println("Enter search criteria:");
         System.out.println("1. Name");
         System.out.println("2. Phone Number");
@@ -132,8 +215,8 @@ public static Scanner input = new Scanner (System.in);
         int choice = input.nextInt();
         return choice;
     }
-    public static int submenu5()
-    {
+
+    public static int submenu5() {
         System.out.println("Enter search criteria:");
         System.out.println("1. contact name");
         System.out.println("2. Event tittle");
@@ -141,91 +224,89 @@ public static Scanner input = new Scanner (System.in);
         int choice = input.nextInt();
         return choice;
     }
-         
+
     public static void main(String[] args) {
-        
-        
+
         System.out.println("Welcome to the Linked List Phonebook!");
         int choice;
         Contact c = new Contact();
-         
+
         do {
             choice = menu();
-            switch (choice)
-            {
+            switch (choice) {
                 case 1:
-                     c.read_contact();
+                    c.read_contact();
                     AddContact(c);
                     break;
-                
+
                 case 2:
-                   int choice2 = submenu2();
-                   switch (choice2){
-                       case 1:
+                    int choice2 = submenu2();
+                    switch (choice2) {
+                        case 1:
                             System.out.println("Enter the contact's name:");
-        String name = input.nextLine();
-        c.setContactName(name);
-                           searchbyName(c.getContactName());
-                           break;
-                       case 2:
-                                 System.out.println("Enter the contact's Phone Number:");
-        String phonNumber = input.nextLine();
-        c.setPhoneNumber(phonNumber);
-                           searchbyphonenum(c.getPhoneNumber());
-                           break;
-                       case 3:
+                            String name = input.nextLine();
+                            c.setContactName(name);
+                            searchbyName(c.getContactName());
+                            break;
+                        case 2:
+                            System.out.println("Enter the contact's Phone Number:");
+                            String phonNumber = input.nextLine();
+                            c.setPhoneNumber(phonNumber);
+                            searchbyphonenum(c.getPhoneNumber());
+                            break;
+                        case 3:
                             System.out.println("Enter the contact's email:");
-        String email1 = input.nextLine();
-        c.setEmailAddress(email1);
-                           searchbyemail(c.getEmailAddress());
-                           break;
-                       case 4:
+                            String email1 = input.nextLine();
+                            c.setEmailAddress(email1);
+                            searchbyemail(c.getEmailAddress());
+                            break;
+                        case 4:
                             System.out.println("Enter the contact's Address");
-        String address1 = input.nextLine();
-        c.setAddress(address1);
-                           searchbyaddress(c.getAddress());
-                           break;
-                       case 5:
+                            String address1 = input.nextLine();
+                            c.setAddress(address1);
+                            contacts.SearchByAddress(name);
+                            break;
+                        case 5:
                             System.out.println("Enter the contact'sBirthday:");
-        String bday = input.nextLine();
-        c.setBirthday(bday);
-                           searchbybirthday(c.getBirthday());
-                           break;
-                   }
+                            String bday = input.nextLine();
+                            c.setBirthday(bday);
+                            searchbybirthday(c.getBirthday());
+                            break;
+                    }
                     ;
                     break;
-                
+
                 case 3:
                     DeleteContact(c.getContactName());
                     break;
-                
+
                 case 4:
-                    ScheduleEvent();
+                    schedulingEvent();
                     break;// anouddddddddd helppppp
-                
+
                 case 5:
                     PrintEvent();
                     break;
-                    
+
                 case 6:
                     System.out.println("Enter the contact's first name:");
-        String name = input.nextLine();
-        c.setContactName(name);
-                     display();
+                    String name = input.nextLine();
+                    c.setContactName(name);
+                    display();
                     break;
-                    
+
                 case 7:
                     PrintAllEvents();
                     break; // anouddd helpp
-                    
+
                 case 8:
                     System.out.println("Goodbye!");
                     break;
-                default :
+                default:
                     System.out.println("Bad choice! Try again");
             }
             System.out.println("\n\n");
-        }while (choice != 8);
+        } while (choice != 8);
     }
-       
+
 }
