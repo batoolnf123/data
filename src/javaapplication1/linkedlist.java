@@ -7,7 +7,8 @@ public class linkedlist<T> {
     private node<T> head;
     private node<T> current;
 
-    public linkedlist() {
+    public linkedlist() //joury
+    {
         
         current = null;
        head= null;
