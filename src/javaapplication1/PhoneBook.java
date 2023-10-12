@@ -242,36 +242,61 @@ public class PhoneBook {
                 case 2:
                     int choice2 = submenu2();
                     switch (choice2) {
-                        case 1:
+                        case 1:   
                             System.out.println("Enter the contact's name:");
                             String name = input.nextLine();
-                            c.setContactName(name);
-                            searchbyName(c.getContactName());
+                           
+                          
+                            if(contacts.searchByName(name)==null)
+                                  System.out.println("Contact not found!");
+                            else{System.out.println("Contact found!");
+                                
+                            (contacts.searchByName(name)).displayContact();
+                            }
+                                
                             break;
                         case 2:
                             System.out.println("Enter the contact's Phone Number:");
                             String phonNumber = input.nextLine();
-                            c.setPhoneNumber(phonNumber);
-                            searchbyphonenum(c.getPhoneNumber());
+                            
+                            if(contacts.SearchByPhoneNumber(phonNumber)==null)
+                                  System.out.println("Contact not found!");
+                            else{System.out.println("Contact found!");
+                                
+                            (contacts.SearchByPhoneNumber(phonNumber)).displayContact();
+                            }
                             break;
                         case 3:
                             System.out.println("Enter the contact's email:");
                             String email1 = input.nextLine();
-                            c.setEmailAddress(email1);
-                            searchbyemail(c.getEmailAddress());
+                            if((contacts.SearchByEmail(email1))==null)
+                                System.out.println("Contact not found!");
+                            else{System.out.println("Contact found!");
+                                
+                            (contacts.SearchByEmail(email1)).displayContact();
+                            }
                             break;
                         case 4:
                             System.out.println("Enter the contact's Address");
                             String address1 = input.nextLine();
-                            c.setAddress(address1);
-                            contacts.SearchByAddress(name);
+                            if((contacts.SearchByAddress(address1))==null)
+                                System.out.println("Contact not found!");
+                            else{System.out.println("Contact found!");
+                                
+                            (contacts.SearchByAddress(address1)).displayContact();
+                            }
                             break;
                         case 5:
-                            System.out.println("Enter the contact'sBirthday:");
+                            System.out.println("Enter the contact's Birthday:");
                             String bday = input.nextLine();
-                            c.setBirthday(bday);
-                            searchbybirthday(c.getBirthday());
+                            if((contacts.SearchByBirthday(bday))==null)
+                                System.out.println("Contact not found!");
+                            else{System.out.println("Contact found!");
+                                
+                            (contacts.SearchByBirthday(bday)).displayContact();
+                            }
                             break;
+                        
                     }
                     ;
                     break;
