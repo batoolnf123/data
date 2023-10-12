@@ -44,6 +44,11 @@ package javaapplication1;
         this.involvedContact = involvedContact;
     }
 
+    public String getDate() {
+        return date;
+    }
+    
+
     public String getTitle() {
         return title;
     }
