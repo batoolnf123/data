@@ -48,6 +48,30 @@ public class PhoneBook {
         }
 
     }
+     public linkedlist<Contact> searchByFirstName(String name) //joury
+    {
+    
+        if (contacts.isEmpty()) {
+            return null;
+        } 
+         
+          contacts.findfirst();
+        
+ linkedlist <Contact> ContactsList=new linkedlist<Contact>();
+    
+        while (!contacts.last()) {
+           int fName=name.indexOf(" ");
+            if (((Contact) contacts.retrieve()).getContactName().substring(0,fName ).equals(name))
+            {
+                ContactsList.addSortedContact(contacts.retrieve());
+            } 
+            
+            contacts.findnext();
+            }
+        
+     return ContactsList;
+    }
+    
 
     //new? add ev/search t and cn ev/sched/ printallev / dis ev done. +wtvr m did? 
     public static Event searchEventTitle(String n) { //anoud check after bool
