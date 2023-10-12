@@ -223,43 +223,32 @@ public class linkedlist<T> {
     }
 //    batool wrote insert and search, Joury wrote the rest
     
-    public void addSortedContact(T x) //joury 
+    public void addSortedContact(T d) //joury 
     { 
-        node<T> nweContact=new node<T>(x);
+        node<T> p=new node<T>(d);
         //case1
      if (head == null) 
-            head = current=nweContact;
+            head = current=p;
             //case2
-   else     if (search(x)) {
-            System.out.println("this contact is already exist");
-                return; }
-            //case3
-            else 
-            if(((Contact)x).CompareTo(((Contact) head.data).getContactName())==0){
-                  current.next=nweContact;
-                  current=nweContact;
-           } //case4
-             else
-           if(((Contact)x).CompareTo(((Contact) head.data).getContactName())<0){
-              nweContact.next=head;
-              head=nweContact;
-           }
-           //case5 
-           else{
-            node<T> current2=head;
-            node<T> pointer=null;
-           
-      while(current2!=null && (((Contact)current2.data).CompareTo(((Contact)x).getContactName())<=0))  
-      {
-          pointer=current2;
-          current2=current2.next;
-      }
-      pointer.next=nweContact;
-      nweContact.next=pointer; }  
-     
-      System.out.println("Contact added successfully!");
-
-      }   
+   else
+     {//if smaller than first
+         if(((Contact)d).compareTo((Contact)head.data<0)
+            {p.next=head;
+             head=p
+                 return;
+            }
+         else{
+             node<T>r=head,q=null;
+             while(r!=null&&(((Contact)r.data).compareTo((Contact)d)<=0)){
+                 q=r;
+                 r=r.next;
+             }
+             q.next=p;
+             p.next=r;}}
+         
+    
+    
+     } 
      
     public void addSortedEvent(T x)  
     { 
