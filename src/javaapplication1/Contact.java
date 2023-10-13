@@ -119,9 +119,13 @@ public class Contact implements Comparable<Contact> {
     @Override
     public void display() //joury
     {
-        System.out.println("Contact: " + contactName + " phone number: " + phoneNumber + "email address: " + emailAddress + "address: "
-                + address + "birthday: " + birthday + "notes: " + notes);
-    }
+        System.out.println("Contact: " + contactName );
+        System.out.println( " phone number: " + phoneNumber );
+        System.out.println( "email address: " + emailAddress );
+        System.out.println( "address: " +address);
+        System.out.println( "birthday: " + birthday );
+        System.out.println("notes: " + notes);
+    }//total =5, O(1)
 
     @Override
     public int CompareTo(String second) //joury
@@ -135,3 +139,4 @@ public class Contact implements Comparable<Contact> {
         }
     }
 }
+    
