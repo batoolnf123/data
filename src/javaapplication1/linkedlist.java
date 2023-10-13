@@ -59,27 +59,31 @@ public class linkedlist<T> {
         return null;
     }
 
-    public Contact SearchByEmail(String email) //joury
+    public linkedlist<Contact> SearchByEmail(String email) //joury //0
     {
-        if (head == null) {
-            return null;
+                        linkedlist<Contact> list=new linkedlist<Contact>();
+
+        if (head == null) { //1
+            return null; //1
         } else {
-            current = head;
+            current = head;//1
         }
 
-        while (current != null) {
-            if (((Contact) current.getData()).getEmailAddress().equals(email)) {
-                return (Contact) current.getData();
+        while (current != null) {//n+1
+            if (((Contact) current.getData()).getEmailAddress().equals(email)) {//{n(1)
+                 list.insert((  Contact)current.getData());
             } 
-                current = current.next;
-            }
-
-        
-        return null;
+                current = current.next;// n*1
     }
 
-    public Contact SearchByPhoneNumber(String num) //joury
+        
+        return list;
+    }
+
+    public linkedlist<Contact> SearchByPhoneNumber(String num) //joury 
     {
+      linkedlist<Contact> list=new linkedlist<Contact>();
+
         if (head == null) {
             return null;
         } else {
@@ -88,17 +92,19 @@ public class linkedlist<T> {
 
         while (current != null) {
             if (((Contact) current.getData()).getPhoneNumber().equals(num)) {
-                return (Contact) current.getData();
+                 list.insert((  Contact)current.getData());
             }
                 current = current.next;
             
         }
 
-        return null;
+        return list;
     }
 
-    public Contact SearchByAddress(String add) //joury
+    public linkedlist<Contact> SearchByAddress(String add) //joury
     {
+                linkedlist<Contact> list=new linkedlist<Contact>();
+
         if (head == null) {
             return null;
         } else {
@@ -107,32 +113,32 @@ public class linkedlist<T> {
 
         while (current != null) {
             if (((Contact) current.getData()).getAddress().equals(add)) {
-                return (Contact) current.getData();
+                 list.insert((  Contact)current.getData());
             } 
                 current = current.next;
             
         }
 
-        return null;
+        return list;
     }
 
-    public Contact SearchByBirthday(String birth) //joury
+    public linkedlist<Contact> SearchByBirthday(String birth) //joury
     {
+        linkedlist<Contact> list=new linkedlist<Contact>();
         if (head == null) {
             return null;
         } else {
             current = head;
-        }
+        
 
         while (current != null) {
-            if (((Contact) current.getData()).getBirthday().equals(birth)) {
-                return (Contact) current.getData();
-            } 
+            if (((Contact) current.getData()).getBirthday().equals(birth)) 
+                 list.insert((  Contact)current.getData());
                 current = current.next;
-            }
-        
-        return null;
-    }
+        }
+      
+        return list;
+    }}
     public void printList() //joury
     {
         current = head;
