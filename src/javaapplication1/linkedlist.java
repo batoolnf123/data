@@ -41,22 +41,23 @@ public class linkedlist<T> {
             current = current.next;
         }}
 
-         public Contact searchByName(String name) //joury
+         public Contact searchByName(String name) //joury 
     {
-        if (head == null) {
-            return null;
+        if (head == null) { //1 s
+            return null;  //1
         } else {
-            current = head;
-        }
+            current = head;//1
+        }// 2
 
-        while (current != null) {
-            if (((Contact) current.getData()).getContactName().equals(name)) {
-                return (Contact) current.getData();
+        while (current != null) { //n+1
+        
+            if (((Contact) current.getData()).getContactName().equals(name)) {//n(1)
+                return (Contact) current.getData();//1(n)
             } 
-                current = current.next;
+                current = current.next;//1
             }
         
-        return null;
+        return null;//1
     }
 
     public linkedlist<Contact> SearchByEmail(String email) //joury //0
