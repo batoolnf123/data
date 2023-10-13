@@ -16,8 +16,15 @@ public class Contact implements Comparable<Contact> {
     public static linkedlist<Event> contactEvents;  //static?
    
 
-    public Contact() //  costructor joury
+     public Contact() //  costructor joury
     {
+        contactName="";
+        phoneNumber="";
+        emailAddress="";
+        address="";
+        birthday="";
+        notes="";
+        
     }
 
     public Contact(String contactName, String phoneNumber, String emailAddress, String address, String birthday, String notes) //copy costructor joury
