@@ -1,14 +1,5 @@
 package javaapplication1;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-/**
- *
- * @author batoolalfouzan
- */
-
 import java.util.Scanner;
 
 public class PhoneBook {
@@ -28,11 +19,11 @@ public class PhoneBook {
         contacts = contactlist;
     }
 
-    public static boolean search(Contact c) {
+    public static boolean search1(Contact c) {
 
-        if (contacts.isEmpty()) {
+        if (contacts.isEmpty()) 
             return false;
-        }
+        
         contacts.findfirst();
         while (!contacts.last()) {
             if (contacts.retrieve().getContactName().equals(c.getContactName())
@@ -43,8 +34,8 @@ public class PhoneBook {
         }
         if (contacts.retrieve().getContactName().equals(c.getContactName())
                 || contacts.retrieve().getPhoneNumber().equals(c.getPhoneNumber())) {
-            return true;
-        } else {
+              return true;
+        }  else{ 
             return false;
         }
 
@@ -96,23 +87,23 @@ public class PhoneBook {
 
     }
 
-    public static Event searchEventContact(String n) { //anoud check after bool
-        if (events.isEmpty()) {
-            return null;
-        }
-        events.findfirst();
-        while (!events.last()) {
-            if (events.retrieve().getContactName().equals(n)) {
-                return events.retrieve();
+    public static Event searchEventContact(String n) { //anoud check after bool//total=3n+4
+        if (events.isEmpty()) {//1
+            return null;//1
+        }//tot=1
+        events.findfirst();//1 
+        while (!events.last()) {//n+1
+            if (events.retrieve().getContactName().equals(n)) {//n(1)=n//not sure
+                return events.retrieve();//n*1+1=n//not sure
             }
 
-            events.findnext();
-        }
+            events.findnext();//n
+        }//3n+2=n
 
-        if (events.retrieve().getContactName().equals(n)) {
-            return events.retrieve();
+        if (events.retrieve().getContactName().equals(n)) {//1
+            return events.retrieve();//1
         } else {
-            return null;
+            return null;//1
         }
 
     }
@@ -130,9 +121,10 @@ public class PhoneBook {
     }
 
     public void AddContact(Contact c) {
-        boolean found = search(c);
+        boolean found = search1(c);
         if (!found) {
             contacts.addSortedContact(c);
+            
         } else {
             System.out.println("contact couldn't be added");
         }
@@ -145,8 +137,20 @@ public class PhoneBook {
         }
 
     }
-
+/*public static void deletevent(Contact con){
+        con.contactEvents.findfirst();
+        while(!con.contactEvents.last())
+        {
+      if(con.contactEvents.retrieve().contactsinEvent.isEmpty())
+          
+          
+          
+          
+        }
+    
+} */
     public static void DeleteContact(String m) {
+        Contact con;
         if (contacts.isEmpty()) {
             System.out.println("Can't delete an empty list");
             return;
@@ -154,8 +158,11 @@ public class PhoneBook {
         contacts.findfirst();
         while (!contacts.last()) {
             if (contacts.retrieve().getContactName().equals(m)) {
+                con=contacts.retrieve();
+               // deletevent(con);
                 contacts.remove();
-                System.out.println(m + " This contact has been deleted");
+                System.out.println(m + " This contact has been deleted");// check 
+                
                 return;
             }
             contacts.findnext();
@@ -168,28 +175,29 @@ public class PhoneBook {
 
     //event new methods
     public static void PrintAllEvents() { //is this o of n??? +only title or all data?
-        if (!events.isEmpty()) {
-            events.findfirst();
-            while (!events.last()) {
-                // for (int i = 0 ; i < events.size  ; i++) and del the rep
+        if (!events.isEmpty()) {  //1
+            events.findfirst();//1
+            while (!events.last()) {//n+1
+                // for (int i = 0 ; i < events.size  ; i++) and del the rep 
 
-                System.out.println(events.retrieve().getTitle());
-                events.findnext();
+                System.out.println(events.retrieve().getTitle());//n not sure
+                events.findnext();//n*1
             }
-            System.out.println(events.retrieve().getTitle());
+            System.out.println(events.retrieve().getTitle());//1 
 
-        } else {
-            System.out.println("There are no events to print");
+        }//tot 4+3n 
+        else {
+            System.out.println("There are no events to print");//2
         }
-    }
+    }//o(n)
 
     public static void schedulingEvent(Event event1, String name) { //anoud
 
-        Contact contact1 = contacts.searchByName(name);//search in all contacts or in ev contact?
+        Contact contact1 = contacts.searchByName(name);//search in all contacts or in ev contact?//1
 
-        if (contact1 != null && !hasConflict(event1, contact1)) {
+        if (contact1 != null && !hasConflict(event1, contact1)) {//1
 
-            contact1.contactEvents.addSortedEvent(event1); //imp?
+            contact1.contactEvents.addSortedEvent(event1); //imp? //
 
             event1.contactsinEvent.addSortedContact(contact1);
 
@@ -277,7 +285,8 @@ public class PhoneBook {
 
         int choice;
 
-        do {
+        do {                   
+           
             choice = menu();
             switch (choice) {
                 case 1:
@@ -296,8 +305,7 @@ public class PhoneBook {
                     System.out.print("Enter any notes for the contact:");
                     String notes1 = input.nextLine();
                     Contact c = new Contact(contactName1, phoneNumber1, emailAddress1, address1, birthday1, notes1);
-                    p.AddContact(c);
-                    System.out.println("Contact added!");
+                    p.AddContact(c);//first big o
                     break;
 
                 case 2:
@@ -307,12 +315,12 @@ public class PhoneBook {
                             System.out.print("Enter the contact's name:");
                             String name = input.nextLine();
                             input.nextLine();
-                            if (contacts.searchByName(name) == null) {
+                            if (contacts.searchByName(name) == null) {//second big o
                                 System.out.println("Contact not found!");
                             } else {
                                 System.out.println("Contact found!");
 
-                                (contacts.searchByName(name)).display();
+                                (contacts.searchByName(name)).display();//second big o
                             }
 
                             break;
@@ -321,48 +329,49 @@ public class PhoneBook {
                             String phonNumber = input.nextLine();
                             input.nextLine();
 
-                            if (contacts.SearchByPhoneNumber(phonNumber) == null) {
+                            if (contacts.SearchByPhoneNumber(phonNumber) == null) {//second big o
                                 System.out.println("Contact not found!");
                             } else {
                                 System.out.println("Contact found!");
 
-                                (contacts.SearchByPhoneNumber(phonNumber)).display();
+                                (contacts.SearchByPhoneNumber(phonNumber)).display();//second big o
                             }
                             break;
                         case 3:
                             System.out.println("Enter the contact's email:");
                             String email1 = input.nextLine();
                             input.nextLine();
-                            if ((contacts.SearchByEmail(email1)) == null) {
+                            if ((contacts.SearchByEmail(email1)) == null) {//second big o
                                 System.out.println("Contact not found!");
                             } else {
                                 System.out.println("Contact found!");
 
-                                (contacts.SearchByEmail(email1)).display();
+                                (contacts.SearchByEmail(email1)).display();//second big o
                             }
                             break;
                         case 4:
                             System.out.println("Enter the contact's Address");
                             String address2 = input.nextLine();
                             input.nextLine();
-                            if ((contacts.SearchByAddress(address2)) == null) {
+                            
+                            if ((contacts.SearchByAddress(address2)) == null) {//second big o
                                 System.out.println("Contact not found!");
                             } else {
                                 System.out.println("Contact found!");
 
-                                (contacts.SearchByAddress(address2)).display();
+                                (contacts.SearchByAddress(address2)).display();//second big o
                             }
                             break;
                         case 5:
                             System.out.println("Enter the contact's Birthday:");
                             String bday = input.nextLine();
                             input.nextLine();
-                            if ((contacts.SearchByBirthday(bday)) == null) {
+                            if ((contacts.SearchByBirthday(bday)) == null) {//second big o
                                 System.out.println("Contact not found!");
                             } else {
                                 System.out.println("Contact found!");
 
-                                (contacts.SearchByBirthday(bday)).display();
+                                (contacts.SearchByBirthday(bday)).display();//second big o
                             }
                             break;
 
@@ -371,24 +380,26 @@ public class PhoneBook {
                     break;
 
                 case 3:
+                    input.nextLine();
                     System.out.println("Enter cotact name:");
-
-                    DeleteContact(input.nextLine());
+                    
+                   p.DeleteContact(input.nextLine());//second big o
                     break;
 
                 case 4:
                     System.out.print("Enter event title:");
                     String title = input.nextLine();
+                    input.nextLine();
                     System.out.print("Enter contact name:");
                     String name = input.nextLine();
                     System.out.print("Enter event date and time (MM/DD/YYYY:MM):");
-                    String date = input.nextLine();
+                    String date = input.next();
                     String time = input.nextLine();
                     System.out.print("Enter event location:");
                     String location = input.nextLine();
 
-                    Event eventt = new Event(title, date, time, location, name);
-                    schedulingEvent(eventt, name);
+                    Event eventt = new Event(title, date, time, location);
+                    schedulingEvent(eventt, name);//second big o
 
                     break;// anouddddddddd helppppp
 
@@ -398,10 +409,10 @@ public class PhoneBook {
                         case 1:
                             System.out.println("Enter the contact name:");
                             String Cname = input.nextLine();
-                            Event event2 = searchEventContact(Cname);
+                            Event event2 = searchEventContact(Cname);//second big o
                             if (event2 != null) {
                                 System.out.println("Event found!");
-                                event2.display();
+                                event2.display();//second big o
                             } else {
                                 System.out.println("Event not found!");
                             }
@@ -410,10 +421,10 @@ public class PhoneBook {
                         case 2:
                             System.out.print("Enter the event title:");
                             String title1 = input.nextLine();
-                            Event event3 = searchEventTitle(title1);
+                            Event event3 = searchEventTitle(title1);//second big o
                             if (event3 != null) {
                                 System.out.println("Event found!");
-                                event3.display();
+                                event3.display();//second big o
                             } else {
                                 System.out.println("Event not found!");
                             }
@@ -423,24 +434,24 @@ public class PhoneBook {
 
                 case 6:
                     System.out.println("Enter the contact's first name:");
-                    linkedlist<Contact> contactList = searchByFirstName(input.nextLine());
+                    linkedlist<Contact> contactList = searchByFirstName(input.nextLine());//second big o
 
-                    if (contactList == null) {
-                        break;
+                    if (contactList == null) {//1
+                        break;//1 not sure
                     }
-                    contactList.findfirst();
-                    while (!contactList.last()) {
-                        contactList.retrieve().display();
-                        contactList.findnext();
+                    contactList.findfirst();//second big o ,o(1)
+                    while (!contactList.last()) {//second big o, n+1
+                        contactList.retrieve().display();//second big o,n*1+5
+                        contactList.findnext();//second big o, n+1
 
                     }
 
-                    contactList.retrieve().display();
+                    contactList.retrieve().display();//second big o , 1+5
 
                     break;
 
                 case 7:
-                    PrintAllEvents();
+                    PrintAllEvents();//second big o 
                     break; // anouddd helpp
 
                 case 8:
