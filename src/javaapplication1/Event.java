@@ -1,16 +1,6 @@
 package javaapplication1;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author batoolalfouzan
- */
-
-  public class Event implements Comparable<Event> {
+ public class Event implements Comparable<Event> {
 
    private String title;
     private String date; 
@@ -22,6 +12,13 @@ package javaapplication1;
     
    Contact involvedContact ;
    String contactName; 
+
+    public Event(String title, String date, String time, String location) {
+        this.title = title;
+        this.date = date;
+        this.time = time;
+        this.location = location;
+    }
     
  
     public Event() {
@@ -88,4 +85,3 @@ package javaapplication1;
     }
     
 }
-
