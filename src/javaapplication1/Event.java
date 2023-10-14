@@ -1,6 +1,6 @@
 package javaapplication1;
 
- public class Event implements Comparable<Event> {
+public class Event implements Comparable<Event> {
 
    private String title;
     private String date; 
@@ -12,13 +12,6 @@ package javaapplication1;
     
    Contact involvedContact ;
    String contactName; 
-
-    public Event(String title, String date, String time, String location) {
-        this.title = title;
-        this.date = date;
-        this.time = time;
-        this.location = location;
-    }
     
  
     public Event() {
@@ -27,9 +20,21 @@ package javaapplication1;
         this.time = "";
         this.location = "";
         this.contactName = "";
-
+        involvedContact=new Contact();
+        contactsinEvent=new linkedlist<Contact>();
+eventsinEvent =new linkedlist<Event>();
     }
     //settersgetters?
+
+    public Event(String title, String date, String time, String location) {
+        this.title = title;
+        this.date = date;
+        this.time = time;
+        this.location = location;
+        involvedContact=new Contact();
+        contactsinEvent=new linkedlist<Contact>();
+eventsinEvent =new linkedlist<Event>();
+    }
     
 
    public void setContactName(String contactName) {
@@ -63,16 +68,17 @@ package javaapplication1;
     }
 
    @Override
-     public int CompareTo(String second) //anoud
+     public int CompareTo(Event c) //joury
     {
-        if (getTitle().compareTo(second) == 0) {
+        if (getTitle().compareTo(c.getTitle()) == 0) {
             return 0;
-        } else if (getTitle().compareTo(second) > 0) {
+        } else if (getTitle().compareTo(c.getTitle()) > 0) {
             return 1;
         } else {
             return -1;
         }
     }
+    
     
 
     
@@ -85,3 +91,5 @@ package javaapplication1;
     }
     
 }
+
+
