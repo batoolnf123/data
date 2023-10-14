@@ -72,8 +72,7 @@ public class PhoneBook {
         return ContactsList;
     }
 
-    //new? add ev/search t and cn ev/sched/ printallev / dis ev done. +wtvr m did? 
-    public static Event searchEventTitle(String n) { //anoud check after bool
+    public static Event searchEventTitle(String n) {
         if (events.isEmpty()) {
             return null;
         }
@@ -394,7 +393,7 @@ public class PhoneBook {
                     Event eventt = new Event(title, date, time, location);
                     schedulingEvent(eventt, name);
 
-                    break;// anouddddddddd helppppp
+                    break;
 
                 case 5:
                     int pick = searchCriteria();
@@ -452,7 +451,7 @@ public class PhoneBook {
 
                 case 7://ma yktb r8m 7 nfs 3
                     PrintAllEvents();
-                    break; // anouddd helpp
+                    break; 
 
                 case 8:
                     System.out.println("Goodbye!");
