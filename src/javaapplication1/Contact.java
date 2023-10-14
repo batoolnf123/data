@@ -16,15 +16,15 @@ public class Contact implements Comparable<Contact> {
     public static linkedlist<Event> contactEvents;  //static?
    
 
-     public Contact() //  costructor joury
+    public Contact() //  costructor joury
     {
-        contactName="";
-        phoneNumber="";
-        emailAddress="";
-        address="";
-        birthday="";
-        notes="";
-        
+        this.contactName = "";
+        this.phoneNumber = "";
+        this.emailAddress = "";
+        this.address = "";
+        this.birthday = "";
+        this.notes = "";
+        contactEvents = new linkedlist<Event> ();
     }
 
     public Contact(String contactName, String phoneNumber, String emailAddress, String address, String birthday, String notes) //copy costructor joury
@@ -35,6 +35,7 @@ public class Contact implements Comparable<Contact> {
         this.address = address;
         this.birthday = birthday;
         this.notes = notes;
+        contactEvents = new linkedlist<Event> ();
     }
 
     public Contact(Contact contact1) //joury 
@@ -126,24 +127,19 @@ public class Contact implements Comparable<Contact> {
     @Override
     public void display() //joury
     {
-        System.out.println("Contact: " + contactName );
-        System.out.println( " phone number: " + phoneNumber );
-        System.out.println( "email address: " + emailAddress );
-        System.out.println( "address: " +address);
-        System.out.println( "birthday: " + birthday );
-        System.out.println("notes: " + notes);
-    }//total =5, O(1)
+        System.out.println("Contact: " + contactName + " phone number: " + phoneNumber + "email address: " + emailAddress + "address: "
+                + address + "birthday: " + birthday + "notes: " + notes);
+    }
 
     @Override
-    public int CompareTo(String second) //joury
+    public int CompareTo(Contact c) //anoud
     {
-        if (getContactName().compareTo(second) == 0) {
+        if (getContactName().compareTo(c.getContactName()) == 0) {
             return 0;
-        } else if (getContactName().compareTo(second) > 0) {
+        } else if (getContactName().compareTo(c.getContactName()) > 0) {
             return 1;
         } else {
             return -1;
         }
     }
 }
-    
