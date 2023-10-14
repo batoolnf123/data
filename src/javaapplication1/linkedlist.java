@@ -224,80 +224,11 @@ public class linkedlist<T> {
 //    batool wrote insert and search, Joury wrote the rest
 
     
-    public void addSortedContact1(T x) //Batool 
-    {
-        node<T> nweContact = new node<T>(x);
-        //case1
-        if (head == null) {
-            head = nweContact;
-            current = nweContact;
-            return;
-        } //case2
-        else if (((Contact) x).CompareTo(((Contact) head.data)) < 0) {
-            nweContact.next = head;
-            head = nweContact;
-            return;
-        }
-        if (((Contact) x).CompareTo(((Contact) head.data)) == 0) {
-            current.next = nweContact;
-            current = nweContact;
-        } //case4
-        else if (((Contact) x).CompareTo(((Contact) head.data)) < 0) {
-            nweContact.next = head;
-            head = nweContact;
-            return;
-        } //case5 
-        else {
-            node<T> current2 = head;
-            node<T> pointer = null;
+ 
 
-            while (current2 != null && (((Contact) current2.data).CompareTo(((Contact) x)) <= 0)) {
-                pointer = current2;
-                current2 = current2.next;
-            }
-            pointer.next = nweContact;
-            nweContact.next = pointer;
-        }
 
-        System.out.println("Contact added successfully!");
 
-    }
 
-    /*public void addSortedEvent1(T x) {
-        node<T> newEvent = new node<T>(x);
-        //case1
-        if (head == null) {
-            head = current = newEvent;
-        } //case2
-        else if (search(x)) {
-            System.out.println("this event already exists");
-            return;
-        } //case3
-        else if (((Event) x).CompareTo(((Event) head.data)) == 0) {
-            current.next = newEvent;
-            current = newEvent;
-        } //case4
-        else if (((Event) x).CompareTo(((Event) head.data)) < 0) {
-            newEvent.next = head;
-            head = newEvent;
-        } //case5 
-        else {
-            node<T> current2 = head;
-            node<T> pointer = null;
-
-            while (current2 != null && (((Event) current2.data).CompareTo(((Event) x)) <= 0)) {
-                pointer = current2;
-                current2 = current2.next;
-            }
-            pointer.next = newEvent;
-            newEvent.next = pointer;
-        }
-
-        System.out.println("Event added successfully!");
-
-    }*/
-
-//    batool wrote insert and search, Joury wrote the rest
     public void addSortedContact(T d) //joury 
     {
         node<T> p = new node<T>(d);
