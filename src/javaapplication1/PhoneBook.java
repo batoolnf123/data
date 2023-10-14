@@ -1,5 +1,4 @@
 package javaapplication1;
-
 import java.util.Scanner;
 
 public class PhoneBook {
@@ -316,52 +315,69 @@ public class PhoneBook {
 
                             break;
                         case 2:
+
                             System.out.println("Enter the contact's Phone Number:");
                             String phonNumber = input.nextLine();
                             phonNumber = input.nextLine();
-
-                            if (contacts.SearchByPhoneNumber(phonNumber) == null) {
-                                System.out.println("Contact not found!");
+                            linkedlist<Contact> con = contacts.SearchByPhoneNumber(phonNumber);
+                            if (!con.isEmpty()) {
+                                con.findfirst();
+                                while (!con.last()) {
+                                    con.retrieve().display();
+                                    con.findnext();
+                                }
+                                con.retrieve().display();
                             } else {
-                                System.out.println("Contact found!");
-
-                                (contacts.SearchByPhoneNumber(phonNumber)).display();
+                                System.out.println("There are no contacts to print");
                             }
+
                             break;
                         case 3:
                             System.out.println("Enter the contact's email:");
                             String email1 = input.nextLine();
                             email1 = input.nextLine();
-                            if ((contacts.SearchByEmail(email1)) == null) {
-                                System.out.println("Contact not found!");
+                           linkedlist<Contact> con1 = contacts.SearchByEmail(email1);
+                            if (!con1.isEmpty()) {
+                                con1.findfirst();
+                                while (!con1.last()) {
+                                    con1.retrieve().display();
+                                    con1.findnext();
+                                }
+                                con1.retrieve().display();
                             } else {
-                                System.out.println("Contact found!");
-
-                                (contacts.SearchByEmail(email1)).display();
+                                System.out.println("There are no contacts to print");
                             }
                             break;
                         case 4:
                             System.out.println("Enter the contact's Address");
                             String address2 = input.nextLine();
                             address2 = input.nextLine();
-                            if ((contacts.SearchByAddress(address2)) == null) {
-                                System.out.println("Contact not found!");
+                            linkedlist<Contact> con3 = contacts.SearchByAddress(address2);
+                            if (!con3.isEmpty()) {
+                                con3.findfirst();
+                                while (!con3.last()) {
+                                    con3.retrieve().display();
+                                    con3.findnext();
+                                }
+                                con3.retrieve().display();
                             } else {
-                                System.out.println("Contact found!");
-
-                                (contacts.SearchByAddress(address2)).display();
+                                System.out.println("There are no contacts to print");
                             }
                             break;
                         case 5:
                             System.out.println("Enter the contact's Birthday:");
                             String bday = input.nextLine();
                             bday = input.nextLine();
-                            if ((contacts.SearchByBirthday(bday)) == null) {
-                                System.out.println("Contact not found!");
+                           linkedlist<Contact> con4 = contacts.SearchByBirthday(bday);
+                            if (!con4.isEmpty()) {
+                                con4.findfirst();
+                                while (!con4.last()) {
+                                    con4.retrieve().display();
+                                    con4.findnext();
+                                }
+                                con4.retrieve().display();
                             } else {
-                                System.out.println("Contact found!");
-
-                                (contacts.SearchByBirthday(bday)).display();
+                                System.out.println("There are no contacts to print");
                             }
                             break;
 
@@ -406,9 +422,9 @@ public class PhoneBook {
                             if (event2 != null) {
                                 System.out.println("Event found!");
                                 event2.display();
-                            } else {
+                            } else 
                                 System.out.println("Event not found!");
-                            }
+                            
 
                             break;
                         case 2:
@@ -419,7 +435,8 @@ public class PhoneBook {
                             if (event3 != null) {
                                 System.out.println("Event found!");
                                 event3.display();
-                                break;
+                                
+                                
                             } else {
                                 System.out.println("Event not found!");
 
@@ -427,7 +444,7 @@ public class PhoneBook {
 
                             break;
 
-                    }
+                    }break;
 
                 case 6:
                     System.out.println("Enter the contact's first name:");
@@ -451,7 +468,7 @@ public class PhoneBook {
 
                 case 7://ma yktb r8m 7 nfs 3
                     PrintAllEvents();
-                    break; 
+                    break;
 
                 case 8:
                     System.out.println("Goodbye!");
