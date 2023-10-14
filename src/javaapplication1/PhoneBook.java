@@ -53,21 +53,21 @@ public class PhoneBook {
         contacts.findfirst();
 
         linkedlist<Contact> ContactsList = new linkedlist<Contact>();
-        
-int fName;
+
+        int fName;
         while (!contacts.last()) {
             fName = ((Contact) contacts.retrieve()).getContactName().indexOf(" ");
-            
+
             if (((Contact) contacts.retrieve()).getContactName().substring(0, fName).equals(name)) {
                 ContactsList.addSortedContact(contacts.retrieve());
             }
 
             contacts.findnext();
         }
-         fName = ((Contact) contacts.retrieve()).getContactName().indexOf(" ");
+        fName = ((Contact) contacts.retrieve()).getContactName().indexOf(" ");
         if (((Contact) contacts.retrieve()).getContactName().substring(0, fName).equals(name)) {
-                ContactsList.addSortedContact(contacts.retrieve());
-            }
+            ContactsList.addSortedContact(contacts.retrieve());
+        }
         System.out.println("Contacts found!");
         return ContactsList;
     }
@@ -129,7 +129,7 @@ int fName;
 
     public void AddContact(Contact c) {
         Contact cfound = contacts.searchByName(c.getContactName());
-        if (cfound!=null) {
+        if (cfound != null) {
             System.out.println("contact couldn't be added");
         } else {
             contacts.addSortedContact(c);
@@ -147,22 +147,24 @@ int fName;
 
     public static void DeleteContact(String m) {
         if (contacts.isEmpty()) {
-            System.out.println("Can't delete an empty list");
+            System.out.println("Can't delete because the contact is not found ");
             return;
         }
         contacts.findfirst();
         while (!contacts.last()) {
             if (contacts.retrieve().getContactName().equals(m)) {
                 contacts.remove();
-                System.out.println(m + " This contact has been deleted");
+                System.out.println(m + "has been deleted from the contacts");
                 return;
             }
             contacts.findnext();
         }
         if (contacts.retrieve().getContactName().equals(m)) {
             contacts.remove();
-            System.out.println(m + " This contact has been deleted");
+            System.out.println(m + " has been deleted from the contacts");
+            return;
         }
+        System.out.println("Can't delete because the contact is not found ");
     }
 
     //event new methods
@@ -226,9 +228,8 @@ int fName;
 
         if (c1.contactEvents.retrieve().getDate().equals(e1.getDate()) && c1.contactEvents.retrieve().getTime().equals(e1.getTime())) {
             return true; //check for the last event in list
-        } 
-            return false;
-        
+        }
+        return false;
 
     }
 
@@ -318,7 +319,7 @@ int fName;
                         case 2:
                             System.out.println("Enter the contact's Phone Number:");
                             String phonNumber = input.nextLine();
-                            phonNumber =input.nextLine();
+                            phonNumber = input.nextLine();
 
                             if (contacts.SearchByPhoneNumber(phonNumber) == null) {
                                 System.out.println("Contact not found!");
@@ -331,7 +332,7 @@ int fName;
                         case 3:
                             System.out.println("Enter the contact's email:");
                             String email1 = input.nextLine();
-                            email1 =input.nextLine();
+                            email1 = input.nextLine();
                             if ((contacts.SearchByEmail(email1)) == null) {
                                 System.out.println("Contact not found!");
                             } else {
@@ -343,7 +344,7 @@ int fName;
                         case 4:
                             System.out.println("Enter the contact's Address");
                             String address2 = input.nextLine();
-                            address2 =input.nextLine();
+                            address2 = input.nextLine();
                             if ((contacts.SearchByAddress(address2)) == null) {
                                 System.out.println("Contact not found!");
                             } else {
@@ -355,7 +356,7 @@ int fName;
                         case 5:
                             System.out.println("Enter the contact's Birthday:");
                             String bday = input.nextLine();
-                            bday =input.nextLine();
+                            bday = input.nextLine();
                             if ((contacts.SearchByBirthday(bday)) == null) {
                                 System.out.println("Contact not found!");
                             } else {
@@ -369,17 +370,19 @@ int fName;
 
                     break;
 
-                case 3://ma yktb r8m 3 nfs 7
-                    System.out.println("Enter cotact name:");
+                case 3://ma yktb r8m 3 nfs 7 //now doesnt read from user
+                    System.out.println("Enter contact name:");
+                    String deleteName = input.nextLine();
+                    deleteName = input.nextLine();
 
-                    DeleteContact(input.nextLine());
-                    System.out.println("contact deleted");
+                    DeleteContact(deleteName);
+
                     break;
 
                 case 4:
                     System.out.print("Enter event title:");
                     String title = input.nextLine();
-                     title =input.nextLine();
+                    title = input.nextLine();
                     System.out.print("Enter contact name:");
                     String name = input.nextLine();
                     System.out.print("Enter event date and time (MM/DD/YYYY:MM):");
@@ -420,20 +423,18 @@ int fName;
                                 break;
                             } else {
                                 System.out.println("Event not found!");
-                                
+
                             }
 
                             break;
-                            
-                            
+
                     }
 
-                case 6://error
+                case 6:
                     System.out.println("Enter the contact's first name:");
-                    String firstname=input.next();
-                    //firstname=input.nextLine();
+                    String firstname = input.next();
+
                     linkedlist<Contact> contactList = searchByFirstName(firstname);
-                    
 
                     if (contactList == null) {
                         break;
