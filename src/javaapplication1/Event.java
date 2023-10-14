@@ -92,4 +92,3 @@ eventsinEvent =new linkedlist<Event>();
     
 }
 
-
