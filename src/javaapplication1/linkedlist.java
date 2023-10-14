@@ -13,7 +13,7 @@ public class linkedlist<T> {
 
     public linkedlist(node<T> h) //joury
     {
-        head = h;
+        head =current= h;
 
     }
 
