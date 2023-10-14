@@ -7,24 +7,15 @@ public class linkedlist<T> {
     private node<T> head;
     private node<T> current;
 
-    public linkedlist() //joury
-    {
-        
-        current = null;
-       head= null;
-    
+    public linkedlist() {
+
     }
 
-    
     public linkedlist(node<T> h) //joury
     {
-        head=current= h;
+        head = h;
 
     }
-
-
-
-   
 
     public void deletContact(node<Contact> delet) //joury
     {
@@ -39,52 +30,49 @@ public class linkedlist<T> {
             }
 
             current = current.next;
-        }}
-
-         public Contact searchByName(String name) //joury 
-    {
-        if (head == null) { //1 s
-            return null;  //1
-        } else {
-            current = head;//1
-        }// 2
-
-        while (current != null) { //n+1
-        
-            if (((Contact) current.getData()).getContactName().equals(name)) {//n(1)
-                return (Contact) current.getData();//1(n)
-            } 
-                current = current.next;//1
-            }
-        
-        return null;//1
+        }
     }
 
-    public linkedlist<Contact> SearchByEmail(String email) //joury //0
+    public Contact searchByName(String name) //joury
     {
-                        linkedlist<Contact> list=new linkedlist<Contact>();
-
-        if (head == null) { //1
-            return null; //1
-        } else {
-            current = head;//1
+        if (head == null) {
+            return null;
+        } 
+         
+            current = head;
+    
+        while (current != null) {
+            
+            
+            if (((Contact) current.getData()).getContactName().equals(name)) {
+                return (Contact) current.getData();
+            }
+            current = current.next;
         }
 
-        while (current != null) {//n+1
-            if (((Contact) current.getData()).getEmailAddress().equals(email)) {//{n(1)
-                 list.insert((  Contact)current.getData());
-            } 
-                current = current.next;// n*1
+        return null;
     }
 
-        
-        return list;
-    }
-
-    public linkedlist<Contact> SearchByPhoneNumber(String num) //joury 
+    public Contact SearchByEmail(String email) //joury
     {
-      linkedlist<Contact> list=new linkedlist<Contact>();
+        if (head == null) {
+            return null;
+        } else {
+            current = head;
+        }
 
+        while (current != null) {
+            if (((Contact) current.getData()).getEmailAddress().equals(email)) {
+                return (Contact) current.getData();
+            }
+            current = current.next;
+        }
+
+        return null;
+    }
+
+    public Contact SearchByPhoneNumber(String num) //joury
+    {
         if (head == null) {
             return null;
         } else {
@@ -93,19 +81,17 @@ public class linkedlist<T> {
 
         while (current != null) {
             if (((Contact) current.getData()).getPhoneNumber().equals(num)) {
-                 list.insert((  Contact)current.getData());
+                return (Contact) current.getData();
             }
-                current = current.next;
-            
+            current = current.next;
+
         }
 
-        return list;
+        return null;
     }
 
-    public linkedlist<Contact> SearchByAddress(String add) //joury
+    public Contact SearchByAddress(String add) //joury
     {
-                linkedlist<Contact> list=new linkedlist<Contact>();
-
         if (head == null) {
             return null;
         } else {
@@ -114,32 +100,33 @@ public class linkedlist<T> {
 
         while (current != null) {
             if (((Contact) current.getData()).getAddress().equals(add)) {
-                 list.insert((  Contact)current.getData());
-            } 
-                current = current.next;
-            
+                return (Contact) current.getData();
+            }
+            current = current.next;
+
         }
 
-        return list;
+        return null;
     }
 
-    public linkedlist<Contact> SearchByBirthday(String birth) //joury
+    public Contact SearchByBirthday(String birth) //joury
     {
-        linkedlist<Contact> list=new linkedlist<Contact>();
         if (head == null) {
             return null;
         } else {
             current = head;
-        
+        }
 
         while (current != null) {
-            if (((Contact) current.getData()).getBirthday().equals(birth)) 
-                 list.insert((  Contact)current.getData());
-                current = current.next;
+            if (((Contact) current.getData()).getBirthday().equals(birth)) {
+                return (Contact) current.getData();
+            }
+            current = current.next;
         }
-      
-        return list;
-    }}
+
+        return null;
+    }
+
     public void printList() //joury
     {
         current = head;
@@ -217,7 +204,7 @@ public class linkedlist<T> {
         }
     }
 
-    public boolean search(T x) {
+    /*public boolean search(T x) {
         node<T> temp = head;
         while (temp != null) {
             if (temp.data.equals(x)) {
@@ -227,71 +214,131 @@ public class linkedlist<T> {
             }
         }
         return false;
-    }
+    }*/
 //    batool wrote insert and search, Joury wrote the rest
-    
-    public void addSortedContact(T d) //joury 
-    { 
-        node<T> p=new node<T>(d);
-        //case1
-     if (head == null) 
-            head = current=p;
-            //case2
-   else
-     {//if smaller than first
-         if(((Contact)d).compareTo((Contact)head.data<0)
-            {p.next=head;
-             head=p
-                 return;
-            }
-         else{
-             node<T>r=head,q=null;
-             while(r!=null&&(((Contact)r.data).compareTo((Contact)d)<=0)){
-                 q=r;
-                 r=r.next;
-             }
-             q.next=p;
-             p.next=r;}}
-         
-    
-    
-     } 
-     
-    public void addSortedEvent(T x)  
-    { 
-        node<T> newEvent=new node<T>(x);
-        //case1
-     if (head == null) 
-            head = current=newEvent;
-            //case2
-   else     if (search(x)) {
-            System.out.println("this event already exists");
-                return; }
-            //case3
-            else 
-            if(((Event)x).CompareTo(((Event) head.data).getContactName())==0){
-                  current.next=newEvent;
-                  current=newEvent;
-           } //case4
-             else
-           if(((Event)x).CompareTo(((Event) head.data).getContactName())<0){
-             newEvent.next=head;
-              head=newEvent;
-           }
-           //case5 
-           else{
-            node<T> current2=head;
-            node<T> pointer=null;
-           
-      while(current2!=null && (((Event)current2.data).CompareTo(((Event)x).getContactName())<=0))  
-      {
-          pointer=current2;
-          current2=current2.next;
-      }
-      pointer.next=newEvent;
-      newEvent.next=pointer; }  
-     
-      System.out.println("Event added successfully!");
 
-      }   
+    
+    public void addSortedContact1(T x) //joury 
+    {
+        node<T> nweContact = new node<T>(x);
+        //case1
+        if (head == null) {
+            head = nweContact;
+            current = nweContact;
+            return;
+        } //case2
+        else if (((Contact) x).CompareTo(((Contact) head.data)) < 0) {
+            nweContact.next = head;
+            head = nweContact;
+            return;
+        }
+        if (((Contact) x).CompareTo(((Contact) head.data)) == 0) {
+            current.next = nweContact;
+            current = nweContact;
+        } //case4
+        else if (((Contact) x).CompareTo(((Contact) head.data)) < 0) {
+            nweContact.next = head;
+            head = nweContact;
+            return;
+        } //case5 
+        else {
+            node<T> current2 = head;
+            node<T> pointer = null;
+
+            while (current2 != null && (((Contact) current2.data).CompareTo(((Contact) x)) <= 0)) {
+                pointer = current2;
+                current2 = current2.next;
+            }
+            pointer.next = nweContact;
+            nweContact.next = pointer;
+        }
+
+        System.out.println("Contact added successfully!");
+
+    }
+
+    /*public void addSortedEvent1(T x) {
+        node<T> newEvent = new node<T>(x);
+        //case1
+        if (head == null) {
+            head = current = newEvent;
+        } //case2
+        else if (search(x)) {
+            System.out.println("this event already exists");
+            return;
+        } //case3
+        else if (((Event) x).CompareTo(((Event) head.data)) == 0) {
+            current.next = newEvent;
+            current = newEvent;
+        } //case4
+        else if (((Event) x).CompareTo(((Event) head.data)) < 0) {
+            newEvent.next = head;
+            head = newEvent;
+        } //case5 
+        else {
+            node<T> current2 = head;
+            node<T> pointer = null;
+
+            while (current2 != null && (((Event) current2.data).CompareTo(((Event) x)) <= 0)) {
+                pointer = current2;
+                current2 = current2.next;
+            }
+            pointer.next = newEvent;
+            newEvent.next = pointer;
+        }
+
+        System.out.println("Event added successfully!");
+
+    }*/
+
+//    batool wrote insert and search, Joury wrote the rest
+    public void addSortedContact(T d) //joury 
+    {
+        node<T> p = new node<T>(d);
+        //case1
+        if (head == null) {
+            head = p;
+            current = p;
+        } //case2
+        else {//if smaller than first
+            if (((Contact) d).CompareTo((Contact) head.data) < 0) {
+                p.next = head;
+                head = p;
+                return;
+            } else {
+                node<T> r = head, q = null;
+                while (r != null && (((Contact) r.data).CompareTo((Contact) d) <= 0)) {
+                    q = r;
+                    r = r.next;
+                }
+                q.next = p;
+                p.next = r;
+            }
+        }
+    }
+
+    public void addSortedEvent(T d) //anoud
+    {
+        node<T> p = new node<T>(d);
+        //case1
+        if (head == null) {
+            head = current = p;
+        } //case2
+        else {//if smaller than first
+            if (((Event) d).CompareTo((Event) head.data) < 0) {
+                p.next = head;
+                head = p;
+                return;
+            } else {
+                node<T> r = head, q = null;
+                while (r != null && (((Event) r.data).CompareTo((Event) d) <= 0)) {
+                    q = r;
+                    r = r.next;
+                }
+                q.next = p;
+                p.next = r;
+            }
+        }
+
+    }
 }
