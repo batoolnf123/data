@@ -224,7 +224,7 @@ public class linkedlist<T> {
 //    batool wrote insert and search, Joury wrote the rest
 
     
-    public void addSortedContact1(T x) //joury 
+    public void addSortedContact1(T x) //Batool 
     {
         node<T> nweContact = new node<T>(x);
         //case1
