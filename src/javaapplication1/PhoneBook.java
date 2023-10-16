@@ -1,6 +1,10 @@
 package javaapplication1;
 import java.util.Scanner;
 
+import java.util.Scanner;
+
+import java.util.Scanner;
+
 public class PhoneBook {
 
     public static linkedlist<Event> events;
@@ -40,6 +44,9 @@ public class PhoneBook {
         return false;
 
     }
+    
+    
+    
 
     public static linkedlist<Contact> searchByFirstName(String name) //joury
     {
@@ -92,7 +99,7 @@ public class PhoneBook {
 
     }
 
-    public static Event searchEventContact(String n) { //anoud check after bool
+    public static Event searchEventContact(String n) { //anoud , check?
         if (events.isEmpty()) {
             return null;
         }
@@ -113,7 +120,7 @@ public class PhoneBook {
 
     }
 
-    public void PrintEventContacts(Event e) {
+    public void PrintEventContacts(Event e) { //anoud
 
         e.contactsinEvent.findfirst();
         while (!e.contactsinEvent.last()) {
@@ -126,18 +133,18 @@ public class PhoneBook {
     }
 
     public void AddContact(Contact c) {
-        Contact cfound = contacts.searchByName(c.getContactName());
-        if (cfound != null) {
-            System.out.println("contact couldn't be added");
+        boolean cFound = search(c);
+        if (cFound == true) {
+            System.out.println("Contact couldn't be added");
         } else {
             contacts.addSortedContact(c);
-            System.out.println("contact added");
+            System.out.println("Contact added successfully!");
         }
     }
 
-    public static void AddEvent(Event e) {//check
-        Event found = searchEventTitle(e.getTitle());
-        if (found == null) {
+    public static void AddEvent(Event e) { //anoud
+        Event eFound = searchEventTitle(e.getTitle());
+        if (eFound == null) {
             events.addSortedEvent(e);
         }
 
@@ -164,13 +171,12 @@ public class PhoneBook {
         }
         System.out.println("Can't delete because the contact is not found ");
     }
+    
 
-    //event new methods
-    public static void PrintAllEvents() { //is this o of n??? +only title or all data?
-        if (!events.isEmpty()) {
+    public static void PrintAllEvents() { //anoud
+        if (!events.isEmpty()) { 
             events.findfirst();
             while (!events.last()) {
-                // for (int i = 0 ; i < events.size  ; i++) and del the rep
 
                 System.out.println(events.retrieve().getTitle());
                 events.findnext();
@@ -181,24 +187,25 @@ public class PhoneBook {
             System.out.println("There are no events to print");
         }
     }
+    
 
     public static void schedulingEvent(Event event1, String name) { //anoud
 
-        Contact contact1 = contacts.searchByName(name);
+        Contact contact1 = contacts.searchByName(name);// to check if contact exists
 
-        if (contact1 != null && !hasConflict(event1, contact1)) {
+        if (contact1 != null && !hasConflict(event1, contact1)) {//no conflict and contact exists then schedule
 
-            contact1.contactEvents.addSortedEvent(event1); //imp?
+            contact1.contactEvents.addSortedEvent(event1); //add the event in the contact's list
 
-            event1.contactsinEvent.addSortedContact(contact1);
-
-            event1.eventsinEvent.addSortedEvent(event1);
-
+            event1.contactsinEvent.addSortedContact(contact1); //add the contact in the event's list
             event1.setInvolvedContact(contact1);
             event1.setContactName(name);
 
+            AddEvent(event1);//add the event in the all events list if not there
+            
+            event1.eventsinEvent.addSortedEvent(event1);//del?
+
             System.out.println("Event scheduled successfully!");
-            AddEvent(event1); //is this correct?
 
         } else if (contact1 == null) {
             System.out.println("Can't schedule event, because this contact doesn't exist ");
@@ -210,8 +217,8 @@ public class PhoneBook {
 
     }
 
-    public static boolean hasConflict(Event e1, Contact c1) {
-        if (c1.contactEvents.isEmpty()) {
+    public static boolean hasConflict(Event e1, Contact c1) { //anoud
+        if (c1.contactEvents.isEmpty()) { //if the contact has no other events then no conflict
             return false;
         }
 
@@ -231,7 +238,9 @@ public class PhoneBook {
 
     }
 
-    //end of new eventm
+    
+    
+    
     public static int menu() {
         System.out.println("Please choose an option:");
         System.out.println("1. Add a contact");
@@ -242,7 +251,7 @@ public class PhoneBook {
         System.out.println("6. Print contacts by first name");
         System.out.println("7. Print all events alphabetically");
         System.out.println("8. Exit");
-        System.out.println("\nEnter your choice: ");
+        System.out.print("\nEnter your choice: ");
         int choice = input.nextInt();
         return choice;
     }
@@ -254,7 +263,7 @@ public class PhoneBook {
         System.out.println("3. Email Address");
         System.out.println("4. Address");
         System.out.println("5. Birthday");
-        System.out.println("\nEnter your choice: ");
+        System.out.print("\nEnter your choice: ");
         int choice = input.nextInt();
         return choice;
     }
@@ -263,14 +272,14 @@ public class PhoneBook {
         System.out.println("Enter search criteria:");
         System.out.println("1. contact name");
         System.out.println("2. Event tittle");
-        System.out.println("\nEnter your choice: ");
+        System.out.print("\nEnter your choice: ");
         int choice = input.nextInt();
         return choice;
     }
 
     public static void main(String[] args) {
 
-        System.out.println("Welcome to the Linked List Phonebook!");
+        System.out.println("Welcome to the Linked Tree Phonebook!");
         PhoneBook p = new PhoneBook();
 
         int choice;
@@ -316,7 +325,7 @@ public class PhoneBook {
                             break;
                         case 2:
 
-                            System.out.println("Enter the contact's Phone Number:");
+                            System.out.print("Enter the contact's Phone Number:");
                             String phonNumber = input.nextLine();
                             phonNumber = input.nextLine();
                             linkedlist<Contact> con = contacts.SearchByPhoneNumber(phonNumber);
@@ -333,10 +342,10 @@ public class PhoneBook {
 
                             break;
                         case 3:
-                            System.out.println("Enter the contact's email:");
+                            System.out.print("Enter the contact's email:");
                             String email1 = input.nextLine();
                             email1 = input.nextLine();
-                           linkedlist<Contact> con1 = contacts.SearchByEmail(email1);
+                            linkedlist<Contact> con1 = contacts.SearchByEmail(email1);
                             if (!con1.isEmpty()) {
                                 con1.findfirst();
                                 while (!con1.last()) {
@@ -349,7 +358,7 @@ public class PhoneBook {
                             }
                             break;
                         case 4:
-                            System.out.println("Enter the contact's Address");
+                            System.out.print("Enter the contact's Address");
                             String address2 = input.nextLine();
                             address2 = input.nextLine();
                             linkedlist<Contact> con3 = contacts.SearchByAddress(address2);
@@ -365,10 +374,10 @@ public class PhoneBook {
                             }
                             break;
                         case 5:
-                            System.out.println("Enter the contact's Birthday:");
+                            System.out.print("Enter the contact's Birthday:");
                             String bday = input.nextLine();
                             bday = input.nextLine();
-                           linkedlist<Contact> con4 = contacts.SearchByBirthday(bday);
+                            linkedlist<Contact> con4 = contacts.SearchByBirthday(bday);
                             if (!con4.isEmpty()) {
                                 con4.findfirst();
                                 while (!con4.last()) {
@@ -385,8 +394,8 @@ public class PhoneBook {
 
                     break;
 
-                case 3://ma yktb r8m 3 nfs 7 //now doesnt read from user
-                    System.out.println("Enter contact name:");
+                case 3:
+                    System.out.print("Enter contact name:");
                     String deleteName = input.nextLine();
                     deleteName = input.nextLine();
 
@@ -415,16 +424,16 @@ public class PhoneBook {
                     int pick = searchCriteria();
                     switch (pick) {
                         case 1:
-                            System.out.println("Enter the contact name:");
+                            System.out.print("Enter the contact name:");
                             String Cname = input.nextLine();
                             Cname = input.nextLine();
                             Event event2 = searchEventContact(Cname);
                             if (event2 != null) {
                                 System.out.println("Event found!");
                                 event2.display();
-                            } else 
+                            } else {
                                 System.out.println("Event not found!");
-                            
+                            }
 
                             break;
                         case 2:
@@ -435,8 +444,7 @@ public class PhoneBook {
                             if (event3 != null) {
                                 System.out.println("Event found!");
                                 event3.display();
-                                
-                                
+
                             } else {
                                 System.out.println("Event not found!");
 
@@ -444,10 +452,11 @@ public class PhoneBook {
 
                             break;
 
-                    }break;
+                    }
+                    break;
 
                 case 6:
-                    System.out.println("Enter the contact's first name:");
+                    System.out.print("Enter the contact's first name:");
                     String firstname = input.next();
 
                     linkedlist<Contact> contactList = searchByFirstName(firstname);
@@ -466,7 +475,7 @@ public class PhoneBook {
 
                     break;
 
-                case 7://ma yktb r8m 7 nfs 3
+                case 7:
                     PrintAllEvents();
                     break;
 
