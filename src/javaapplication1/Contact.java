@@ -13,7 +13,7 @@ public class Contact implements Comparable<Contact> {
     public String birthday;
     public String notes;
     
-    public static linkedlist<Event> contactEvents;  //static?
+    public linkedlist<Event> contactEvents;  
    
 
     public Contact() //  costructor joury
@@ -108,35 +108,21 @@ public class Contact implements Comparable<Contact> {
         return notes;
     }
 
-    public void read_contact() { //Batool
-        Scanner read = new Scanner(System.in);
-        System.out.println("Enter the contact's name:");
-        contactName = read.nextLine();
-        System.out.println("Enter the contact's phone number:");
-        phoneNumber = read.nextLine();
-        System.out.println("Enter the contact's email address:");
-        emailAddress = read.nextLine();
-        System.out.println("Enter the contact's address: ");
-        address = read.nextLine();
-        System.out.println("Enter the contact's birthday:");
-        birthday = read.nextLine();
-        System.out.println("Enter any notes for the contact:");
-        notes = read.nextLine();
-    }
+    
 
     @Override
     public void display() //joury
     {
-        System.out.println("Contact: " + contactName );
-        System.out.println( " phone number: " + phoneNumber );
-        System.out.println( "email address: " + emailAddress );
-        System.out.println( "address: " +address);
-        System.out.println( "birthday: " + birthday );
-        System.out.println("notes: " + notes);
+        System.out.println("Name:" + contactName );
+        System.out.println( "Phone Number:" + phoneNumber );
+        System.out.println( "Email Address:" + emailAddress );
+        System.out.println( "Address:" +address);
+        System.out.println( "Birthday:" + birthday );
+        System.out.println("Notes:" + notes);
     }
 
     @Override
-    public int CompareTo(Contact c) //anoud
+    public int CompareTo(Contact c) 
     {
         if (getContactName().compareTo(c.getContactName()) == 0) {
             return 0;
