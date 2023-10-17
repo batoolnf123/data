@@ -7,7 +7,7 @@ public class Event implements Comparable<Event> {
     private String time;
     private String location;
 
-    linkedlist<Contact> contactsinEvent; //change name
+    linkedlist<Contact> contactsinEvent; 
 
     Contact involvedContact;
     String contactName;
@@ -62,7 +62,7 @@ public class Event implements Comparable<Event> {
     }
 
     @Override
-    public int CompareTo(Event c) //joury
+    public int CompareTo(Event c) 
     {
         if (getTitle().compareTo(c.getTitle()) == 0) {
             return 0;
@@ -73,7 +73,7 @@ public class Event implements Comparable<Event> {
         }
     }
 
-    public void display() { //anoud
+    public void display() { 
         System.out.println("Event title:" + title);
         System.out.println("Contact name:" + contactName);
         System.out.println("Event date and time (MM/DD/YYYY HH:MM):" + date + time);
