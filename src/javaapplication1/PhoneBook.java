@@ -94,16 +94,18 @@ public class PhoneBook {
 
     }
 
-    public static void searchEventByContact(String n) {//1
+ public static void searchEventByContact(String n) {
+        boolean found = false;
         if (events.isEmpty()) {
             System.out.println("There are no events with this contact name");
             return;
         }
-
+  
         events.findfirst();
         while (!events.last()) {
             if (events.retrieve().getContactName().equals(n)) {
                 events.retrieve().display();
+                found = true;
             }
 
             events.findnext();
@@ -111,11 +113,13 @@ public class PhoneBook {
 
         if (events.retrieve().getContactName().equals(n)) {
             events.retrieve().display();
-        } else {
-            System.out.println("There are no events with this contact name");
-
+            found = true;
+            
         }
-
+        
+        if(!found){ System.out.println("There are no events with this contact name");
+        }
+       
     }
 
     public void PrintContactsShareEvent(Event e) {
