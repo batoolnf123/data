@@ -5,25 +5,22 @@ package javaapplication1;
 
 
 
-public class node<T> //joury
-  {
-public T data;
-public node <T> next;
-//public node<T> prev;
+public class node<T> 
+{
 
-    public node(T d) //joury
+    public T data;
+    public node<T> next;
+
+    public node(T d) 
     {
         this.data = d;
-        next=null;
-        //prev=null;
-        
-        
+        next = null;
+
     }
 
-    public T getData() //joury
+    public T getData() 
     {
         return data;
     }
-    
 
 }
