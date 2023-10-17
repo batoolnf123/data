@@ -18,7 +18,7 @@ public class PhoneBook {
 
     }
 
-    public PhoneBook(linkedlist<Contact> contactlist) { //check?
+    public PhoneBook(linkedlist<Contact> contactlist) { 
         contacts = contactlist;
     }
 
@@ -44,8 +44,9 @@ public class PhoneBook {
         return false;
 
     }
+    
 
-    public static linkedlist<Contact> searchByFirstName(String name) //joury
+    public static linkedlist<Contact> searchByFirstName(String name) 
     {
 
         if (contacts.isEmpty()) {
@@ -74,6 +75,8 @@ public class PhoneBook {
         System.out.println("Contacts found!");
         return ContactsList;
     }
+    
+    
 
     public static Event searchEventTitle(String n) {
         if (events.isEmpty()) {
@@ -95,29 +98,35 @@ public class PhoneBook {
         }
 
     }
+    
+    
 
-    public static Event searchEventContact(String n) { //anoud , check?
+    public static void searchEventContact(String n) { 
         if (events.isEmpty()) {
-            return null;
+            System.out.println("There are no events with this contact name");
+            return ;
         }
+        
         events.findfirst();
         while (!events.last()) {
             if (events.retrieve().getContactName().equals(n)) {
-                return events.retrieve();
+                events.retrieve().display();
             }
 
             events.findnext();
         }
 
         if (events.retrieve().getContactName().equals(n)) {
-            return events.retrieve();
+            events.retrieve().display();
         } else {
-            return null;
+            System.out.println("There are no events with this contact name");
+           
         }
 
     }
+    
 
-    public void PrintEventContacts(Event e) { //anoud
+    public void PrintEventContacts(Event e) { 
 
         e.contactsinEvent.findfirst();
         while (!e.contactsinEvent.last()) {
@@ -128,6 +137,7 @@ public class PhoneBook {
         System.out.println(e.contactsinEvent.retrieve().getContactName());
 
     }
+    
 
     public void AddContact(Contact c) {
         boolean cFound = search(c);
@@ -139,15 +149,16 @@ public class PhoneBook {
         }
     }
 
-    public static void AddEvent(Event e) { //anoud
+    public static void AddEvent(Event e) { 
         Event eFound = searchEventTitle(e.getTitle());
         if (eFound == null) {
             events.addSortedEvent(e);
         }
 
     }
-
-    public static void DeleteContact(String m) {
+    
+   
+    public static void DeleteContact(String m) {//b
         if (contacts.isEmpty()) {
             System.out.println("Can't delete because the contact is not found ");
             return;
@@ -193,36 +204,11 @@ public class PhoneBook {
         }
     }
 
-    public static void schedulingEvent(Event event1, String name) { //anoud
-
-        Contact contact1 = contacts.searchByName(name);// to check if contact exists
-       
-
-        if (contact1 != null && !hasConflict(event1, contact1)) {//no conflict and contact exists then schedule
-
-            contact1.contactEvents.addSortedEvent(event1); //add the event in the contact's list
-
-            event1.contactsinEvent.addSortedContact(contact1); //add the contact in the event's list
-            event1.setInvolvedContact(contact1);
-            event1.setContactName(name);
-
-            AddEvent(event1);//add the event in the all events list if not there
-
-           
-            System.out.println("Event scheduled successfully!");
-
-        } else if (contact1 == null) {
-            System.out.println("Can't schedule event, because this contact doesn't exist ");
-
-        } else if (hasConflict(event1, contact1)) {
-            System.out.println("Can't schedule event, because this contact has a conflict with a scheduled event");
-
-        }
-
-    }
+ 
+    
     
 
-    public static void schedulingEventTest(Event event1, String name) { //anoud
+    public static void schedulingEvent(Event event1, String name) { //anoud
         boolean hasConflict = false;
         Contact c1 = contacts.searchByName(name);// to check if contact exists
         if (c1 == null) {
@@ -269,31 +255,6 @@ public class PhoneBook {
     
     
 
-    public static boolean hasConflict(Event e1, Contact c1) { //anoud
-        
-        System.out.println(c1.contactEvents.isEmpty());
-        
-        if (c1.contactEvents.isEmpty()) { //if the contact has no other events then no conflict
-            return false;
-        }
-        
-
-        c1.contactEvents.findfirst();
-
-        while (!c1.contactEvents.last()) {
-            if (c1.contactEvents.retrieve().getDate().equals(e1.getDate()) && c1.contactEvents.retrieve().getTime().equals(e1.getTime())) {
-                
-                return true; //same date and time in both events so there is a conflict
-            }
-            c1.contactEvents.findnext();
-        }
-
-        if (c1.contactEvents.retrieve().getDate().equals(e1.getDate()) && c1.contactEvents.retrieve().getTime().equals(e1.getTime())) {
-            return true; //check for the last event in list
-        }
-        return false;
-
-    }
 
     public static int menu() {
         System.out.println("Please choose an option:");
@@ -475,7 +436,7 @@ public class PhoneBook {
                     
                     Event eventt = new Event(title, date, time, location);
                     
-                    schedulingEventTest(eventt, name);//5
+                    schedulingEvent(eventt, name);//5
 
                     break;
 
@@ -486,13 +447,13 @@ public class PhoneBook {
                             System.out.print("Enter the contact name:");
                             String Cname = input.nextLine();
                             Cname = input.nextLine();
-                            Event event2 = searchEventContact(Cname);//6 done
-                            if (event2 != null) {
-                                System.out.println("Event found!");
-                                event2.display();
-                            } else {
-                                System.out.println("Event not found!");
-                            }
+                            searchEventContact(Cname);//6 done
+                            //if (event2 != null) {
+                              //  System.out.println("Event found!");
+                               // event2.display();
+                            //} else {
+                              // System.out.println("Event not found!");
+                           // }
 
                             break;
                         case 2:
