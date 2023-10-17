@@ -2,45 +2,40 @@ package javaapplication1;
 
 public class Event implements Comparable<Event> {
 
-   private String title;
-    private String date; 
+    private String title;
+    private String date;
     private String time;
     private String location;
-    
+
     linkedlist<Contact> contactsinEvent; //change name
-    linkedlist<Event> eventsinEvent; //check?
-    
-   Contact involvedContact ;
-   String contactName; 
-    
- 
+
+    Contact involvedContact;
+    String contactName;
+
     public Event() {
         this.title = "";
         this.date = "";
         this.time = "";
         this.location = "";
         this.contactName = "";
-        involvedContact=new Contact();
-        contactsinEvent=new linkedlist<Contact>();
-eventsinEvent =new linkedlist<Event>();
+        involvedContact = new Contact();
+        contactsinEvent = new linkedlist<Contact>();
+
     }
-    //settersgetters?
 
     public Event(String title, String date, String time, String location) {
         this.title = title;
         this.date = date;
         this.time = time;
         this.location = location;
-        involvedContact=new Contact();
-        contactsinEvent=new linkedlist<Contact>();
-eventsinEvent =new linkedlist<Event>();
-    }
-    
+        involvedContact = new Contact();
+        contactsinEvent = new linkedlist<Contact>();
 
-   public void setContactName(String contactName) {
+    }
+
+    public void setContactName(String contactName) {
         this.contactName = contactName;
     }
-
 
     public void setInvolvedContact(Contact involvedContact) {
         this.involvedContact = involvedContact;
@@ -49,7 +44,6 @@ eventsinEvent =new linkedlist<Event>();
     public String getDate() {
         return date;
     }
-    
 
     public String getTitle() {
         return title;
@@ -67,8 +61,8 @@ eventsinEvent =new linkedlist<Event>();
         return contactName;
     }
 
-   @Override
-     public int CompareTo(Event c) //joury
+    @Override
+    public int CompareTo(Event c) //joury
     {
         if (getTitle().compareTo(c.getTitle()) == 0) {
             return 0;
@@ -78,17 +72,12 @@ eventsinEvent =new linkedlist<Event>();
             return -1;
         }
     }
-    
-    
 
-    
-    
     public void display() { //anoud
         System.out.println("Event title:" + title);
-        System.out.println("Contact name:" + contactName );
+        System.out.println("Contact name:" + contactName);
         System.out.println("Event date and time (MM/DD/YYYY HH:MM):" + date + time);
         System.out.println("Event location:" + location);
     }
-    
-}
 
+}
