@@ -2,8 +2,6 @@ package javaapplication1;
 
 
 
-import java.util.Scanner;
-
 public class Contact implements Comparable<Contact> {
 
     public String contactName;
@@ -12,22 +10,20 @@ public class Contact implements Comparable<Contact> {
     public String address;
     public String birthday;
     public String notes;
-    
-    public linkedlist<Event> contactEvents;  
-   
 
-    public Contact() //  costructor joury
-    {
+    public linkedlist<Event> contactEvents;
+
+    public Contact() {
         this.contactName = "";
         this.phoneNumber = "";
         this.emailAddress = "";
         this.address = "";
         this.birthday = "";
         this.notes = "";
-        contactEvents = new linkedlist<Event> ();
+        contactEvents = new linkedlist<Event>();
     }
 
-    public Contact(String contactName, String phoneNumber, String emailAddress, String address, String birthday, String notes) //copy costructor joury
+    public Contact(String contactName, String phoneNumber, String emailAddress, String address, String birthday, String notes) 
     {
         this.contactName = contactName;
         this.phoneNumber = phoneNumber;
@@ -35,7 +31,7 @@ public class Contact implements Comparable<Contact> {
         this.address = address;
         this.birthday = birthday;
         this.notes = notes;
-        contactEvents = new linkedlist<Event> ();
+        contactEvents = new linkedlist<Event>();
     }
 
     public Contact(Contact contact1) //joury 
@@ -46,84 +42,69 @@ public class Contact implements Comparable<Contact> {
         address = contact1.getAddress();
         birthday = contact1.getBirthday();
         notes = contact1.getNotes();
+        contactEvents = contact1.contactEvents;
     }
 
-    public void setContactName(String contactName) //joury
-    {
+    public void setContactName(String contactName) {
         this.contactName = contactName;
     }
 
-    public void setPhoneNumber(String phoneNumber) //joury
-    {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setEmailAddress(String emailAddress) //joury
-    {
+    public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
 
-    public void setAddress(String address) //joury
-    {
+    public void setAddress(String address) {
         this.address = address;
     }
 
-    public void setBirthday(String birthday) //joury
-    {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
-    public void setNotes(String notes) //joury
-    {
+    public void setNotes(String notes) {
         this.notes = notes;
     }
 
-    public String getContactName() //joury
-    {
+    public String getContactName() {
         return contactName;
     }
 
-    public String getPhoneNumber() //joury
-    {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public String getEmailAddress() //joury
-    {
+    public String getEmailAddress() {
         return emailAddress;
     }
 
-    public String getAddress() //joury
-    {
+    public String getAddress() {
         return address;
     }
 
-    public String getBirthday() //joury
-    {
+    public String getBirthday() {
         return birthday;
     }
 
-    public String getNotes() //joury
-    {
+    public String getNotes() {
         return notes;
     }
 
-    
-
     @Override
-    public void display() //joury
-    {
-        System.out.println("Name:" + contactName );
-        System.out.println( "Phone Number:" + phoneNumber );
-        System.out.println( "Email Address:" + emailAddress );
-        System.out.println( "Address:" +address);
-        System.out.println( "Birthday:" + birthday );
+    public void display() {
+        System.out.println("Name:" + contactName);
+        System.out.println("Phone Number:" + phoneNumber);
+        System.out.println("Email Address:" + emailAddress);
+        System.out.println("Address:" + address);
+        System.out.println("Birthday:" + birthday);
         System.out.println("Notes:" + notes);
     }
 
     @Override
-    public int CompareTo(Contact c) 
-    {
+    public int CompareTo(Contact c) {
         if (getContactName().compareTo(c.getContactName()) == 0) {
             return 0;
         } else if (getContactName().compareTo(c.getContactName()) > 0) {
