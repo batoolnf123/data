@@ -11,28 +11,13 @@ public class linkedlist<T> {
 
     }
 
-    public linkedlist(node<T> h) //joury
+    public linkedlist(node<T> h) 
     {
         head = current = h;
 
     }
 
-    /* public void deletContact(node<Contact> delet) //joury
-    {
-        if (head == null) {
-            return;
-        } else {
-            current = head;
-        }
-        while (current != null) {
-            if (current.data == delet.data) {
-                current.prev.next = current.next;
-            }
-
-            current = current.next;
-        }
-    }*/
-    public Contact searchByName(String name) //joury
+    public Contact searchByName(String name) 
     {
         if (head == null) {
             return null;
@@ -51,28 +36,26 @@ public class linkedlist<T> {
         return null;
     }
 
-    public linkedlist<Contact> SearchByEmail(String email) //joury //
-    {
+    public linkedlist<Contact> SearchByEmail(String email) {
         linkedlist<Contact> list = new linkedlist<Contact>();
 
-        if (head == null) { //1
-            return null; //1
+        if (head == null) {
+            return null;
         } else {
-            current = head;//1
+            current = head;
         }
 
-        while (current != null) {//n+1
-            if (((Contact) current.getData()).getEmailAddress().equals(email)) {//{n(1)
+        while (current != null) {
+            if (((Contact) current.getData()).getEmailAddress().equals(email)) {
                 list.insert((Contact) current.getData());
             }
-            current = current.next;// n*1
+            current = current.next;
         }
 
         return list;
     }
 
-    public linkedlist<Contact> SearchByPhoneNumber(String num) //joury 
-    {
+    public linkedlist<Contact> SearchByPhoneNumber(String num) {
         linkedlist<Contact> list = new linkedlist<Contact>();
 
         if (head == null) {
@@ -92,8 +75,7 @@ public class linkedlist<T> {
         return list;
     }
 
-    public linkedlist<Contact> SearchByAddress(String add) //joury
-    {
+    public linkedlist<Contact> SearchByAddress(String add) {
         linkedlist<Contact> list = new linkedlist<Contact>();
 
         if (head == null) {
@@ -113,8 +95,7 @@ public class linkedlist<T> {
         return list;
     }
 
-    public linkedlist<Contact> SearchByBirthday(String birth) //joury
-    {
+    public linkedlist<Contact> SearchByBirthday(String birth) {
         linkedlist<Contact> list = new linkedlist<Contact>();
         if (head == null) {
             return null;
@@ -133,8 +114,7 @@ public class linkedlist<T> {
         }
     }
 
-    public void printList() //joury
-    {
+    public void printList() {
         current = head;
         while (current != null) {
             System.out.print(current.data + " ");
@@ -143,43 +123,39 @@ public class linkedlist<T> {
         System.out.println();
     }
 
-    public boolean isEmpty() //joury
+    public boolean isEmpty() 
     {
         return head == null;
     }
 
-    public boolean last() //joury
+    public boolean last() 
     {
         return current.next == null;
     }
 
-    public void findfirst() //joury
+    public void findfirst() 
     {
         current = head;
     }
 
-    public void findnext() //joury
+    public void findnext() 
     {
         current = current.next;
     }
 
-    public T retrieve() //joury
-    {
+    public T retrieve() {
         return current.data;
     }
 
-    public void update(T x) //joury
-    {
+    public void update(T x) {
         current.data = x;
     }
 
-    public boolean full() //joury
-    {
+    public boolean full() {
         return false;
     }
 
-    public void remove() //joury
-    {
+    public void remove() {
         if (current == head) {
             head = head.next;
         } else {
@@ -210,39 +186,7 @@ public class linkedlist<T> {
         }
     }
 
-    /*public boolean search(T x) {
-        node<T> temp = head;
-        while (temp != null) {
-            if (temp.data.equals(x)) {
-                return true;
-            } else {
-                temp = temp.next;
-            }
-        }
-        return false;
-    }*/
-//    batool wrote insert and search, Joury wrote the rest
-    /*public void addSortedPOEA(T data) {//another one check tab
-        Node<T> newNode = new Node<>(data);
-
-        if (head == null || data.compareTo(head.data) < 0) {
-            newNode.next = head;
-            head = newNode;
-        } else {
-            Node<T> current = head;
-            while (current.next != null && data.compareTo(current.next.data) >= 0) { //to move until finding 
-                current = current.next;
-            }
-
-            newNode.next = current.next;
-            current.next = newNode;
-        }
-    }*/
-
-    
-    
-    public void addSortedContact(T d) //joury 
-    {
+    public void addSortedContact(T d) {
         node<T> newContact = new node<T>(d);
         //case1 if empty
         if (head == null) {
@@ -267,16 +211,16 @@ public class linkedlist<T> {
         }
     }
 
-    public void addSortedEvent(T e) //anoud
+    public void addSortedEvent(T e) 
     {
         node<T> newEvent = new node<T>(e);
         //case1 if empty
         if (head == null) {
             head = newEvent;
             current = newEvent;
-        
-        } //case2 if smaller than first
-        else {
+        } 
+        //case2 if smaller than first
+        else { 
             if (((Event) e).CompareTo((Event) head.data) < 0) {
                 newEvent.next = head;
                 head = newEvent;
@@ -284,7 +228,7 @@ public class linkedlist<T> {
 
             } else {
                 node<T> temp = head;
-                while (temp.next != null && (((Event) e).CompareTo((Event) temp.data) >= 0)) {// search for position of the new node 
+                while (temp.next != null && (((Event) e).CompareTo((Event) temp.data) >= 0)) { // search for position of the new node 
                     temp = temp.next;
                 }
                 newEvent.next = temp.next;
@@ -293,9 +237,5 @@ public class linkedlist<T> {
             }
         }
     }
-    
-    
-    
-    
 
 }
